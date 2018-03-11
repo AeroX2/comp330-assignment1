@@ -10,10 +10,15 @@
 
 #include "entity.hpp"
 
-class House : Entity {
+class House : public Entity {
 	public:
-		House();
-		virtual ~House();
+		House(Vector position, Vector size, int peak);
+		virtual ~House() {};
+
+		void redraw();
+	private:
+		Vector size;
+		int peak;
 };
 
 #endif /* ENTITIES_HOUSE_HPP_ */

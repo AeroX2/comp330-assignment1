@@ -10,7 +10,7 @@
 
 #include "entity.hpp"
 
-class Helicopter : Entity {
+class Helicopter : public Entity {
 	public:
 		Helicopter();
 		void redraw();

@@ -6,9 +6,9 @@
  */
 
 #include "helicopter.hpp"
+#include "../constants.hpp"
 
-Helicopter::Helicopter() {
-
+Helicopter::Helicopter() : Entity(Vector(WINDOW_WIDTH/2,WINDOW_HEIGHT/2)) {
 }
 
 void Helicopter::redraw() {

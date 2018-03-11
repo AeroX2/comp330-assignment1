@@ -10,20 +10,27 @@
 
 #include <vector>
 
-#include "entity.hpp"
-#include "helicopter.hpp"
-#include "sesbase.hpp"
-#include "house.hpp"
+#include "constants.hpp"
+#include "entities/vector.hpp"
+#include "entities/entity.hpp"
+#include "entities/helicopter.hpp"
+#include "entities/sesbase.hpp"
+#include "entities/house.hpp"
 
 using namespace std;
 
 class World {
 	public:
+		World();
 		void init();
 		void update();
 		void redraw();
 	private:
 		Helicopter helicopter;
+		House house1;
+		House house2;
+		House house3;
+
 		vector<Entity*> entities;
 };
 

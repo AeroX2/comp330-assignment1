@@ -8,11 +8,12 @@
 #include "world.hpp"
 #include "constants.hpp"
 
-void World::init() {
-	House house1(HOUSE1_PARAMETERS);
-	House house2(HOUSE2_PARAMETERS);
-	House house3(HOUSE3_PARAMETERS);
+World::World() :
+	house1(HOUSE1_PARAMETERS),
+	house2(HOUSE2_PARAMETERS),
+	house3(HOUSE3_PARAMETERS) {}
 
+void World::init() {
 	entities.push_back(&helicopter);
 	entities.push_back(&house1);
 	entities.push_back(&house2);
@@ -20,14 +21,14 @@ void World::init() {
 }
 
 void World::update() {
-	for (Entity* entity : entities) {
-		entity->update();
+	for (int i = 0; i < entities.size(); i++) {
+		entities[i]->update();
 	}
 }
 
 void World::redraw() {
-	for (Entity* entity : entities) {
-		entity->redraw();
+	for (int i = 0; i < entities.size(); i++) {
+		entities[i]->redraw();
 	}
 }
 

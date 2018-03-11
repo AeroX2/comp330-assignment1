@@ -7,9 +7,7 @@
 
 #include "entity.hpp"
 
-Entity::Entity(Vector position) {
-	this->position = position;
-
+Entity::Entity(Vector position) : position(position) {
 	rotation = 0;
 	rotationVelocity = 0;
 }
@@ -30,4 +28,7 @@ void Entity::update() {
 
 //	velocity += acceleration
 	position += velocity;
+
 }
+
+void Entity::redraw() {}
