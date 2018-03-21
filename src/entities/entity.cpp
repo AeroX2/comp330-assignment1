@@ -7,7 +7,7 @@
 
 #include "entity.hpp"
 
-Entity::Entity(Vector position) : position(position) {
+Entity::Entity(Vector position, Vector size) : position(position), size(size) {
 	rotation = 0;
 	rotationVelocity = 0;
 }

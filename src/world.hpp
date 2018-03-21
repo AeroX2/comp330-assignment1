@@ -26,6 +26,10 @@ class World {
 		void update();
 		void redraw();
 	private:
+		int fps;
+		int frameCounter;
+		int previousTime;
+
 		Helicopter helicopter;
 		House house1;
 		House house2;

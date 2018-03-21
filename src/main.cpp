@@ -5,6 +5,7 @@
  */
 
 #include <GL/glut.h>
+#include <windows.h>
 
 #include "constants.hpp"
 #include "world.hpp"
@@ -15,7 +16,7 @@ double accumulator = 0;
 
 /* Initialization function  */
 void init() {
-	debug("Init")
+	debug("Init");
 
 	//Initialize a few OpenGL parameters
 	glClearColor(0.0, 0.0, 0.0, 0.0);
@@ -62,6 +63,7 @@ void gameloop() {
 		accumulator -= FRAME_RATE;
 		glutPostRedisplay();
 	}
+	Sleep(1);
 }
 
 /*
@@ -77,22 +79,33 @@ void keyUp(unsigned char key, int x, int y) {
 	if (key == 'q') exit(0);
 }
 
+void reshape(int width, int height) {
+	//TODO This function is not correctly resizing the window
+	//const GLfloat aspectRatio = (GLfloat)width / (GLfloat)height;
+	//gluOrtho2D(-aspectRatio, aspectRatio, -1.0f, 1.0f);
+	//gluOrtho2D(0, width, 0, height);
+
+	WINDOW_WIDTH = width;
+	WINDOW_HEIGHT = height;
+}
+
 int main(int argc, char *argv[]) {
-	debug("Starting up")
+	debug("Starting up");
 
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
 	glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 	glutCreateWindow("Helicopter Game");
 
-	debug("Registering callbacks")
+	debug("Registering callbacks");
 	//Register the GLUT callbacks
 	glutIdleFunc(gameloop);
 	glutDisplayFunc(redraw);
 	glutKeyboardFunc(keyDown);
 	glutKeyboardUpFunc(keyUp);
+	//glutReshapeFunc(reshape);
 
-	debug("Starting gameloop")
+	debug("Starting gameloop");
 	init();
 	glutMainLoop();
 

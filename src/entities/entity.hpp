@@ -13,7 +13,7 @@
 
 class Entity {
 	public:
-		Entity(Vector position);
+		Entity(Vector position, Vector size);
 		virtual ~Entity() {};
 
 		virtual void update();
@@ -23,6 +23,8 @@ class Entity {
 		Vector position;
 		//Velocity vector
 		Vector velocity;
+		//Size vector
+		Vector size;
 
 		//Rotation angle in degrees
 		double rotation;

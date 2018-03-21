@@ -8,7 +8,7 @@
 #include "house.hpp"
 
 House::House(Vector position, Vector size, int peak) :
-		Entity(position), size(size), peak(peak) {
+		Entity(position, size), peak(peak) {
 }
 
 void House::redraw() {

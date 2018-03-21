@@ -13,7 +13,10 @@
 class Helicopter : public Entity {
 	public:
 		Helicopter();
+		void update();
 		void redraw();
+	private:
+		float bladeAngle;
 };
 
 #endif /* ENTITIES_HELICOPTER_HPP_ */

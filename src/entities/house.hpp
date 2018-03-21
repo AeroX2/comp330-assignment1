@@ -17,7 +17,6 @@ class House : public Entity {
 
 		void redraw();
 	private:
-		Vector size;
 		int peak;
 };
 
