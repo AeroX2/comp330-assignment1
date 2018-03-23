@@ -1,9 +1,13 @@
 #ifndef UTILS_H
 #define UTILS_H
 
+//Problem with GLUT_ELAPSED_TIME
 //#include <time.h>
+#include <GL/glut.h>
 #include <cmath>
 #include <random>
+
+#include "constants.hpp"
 
 using namespace std;
 
@@ -15,6 +19,7 @@ class Utils {
 		static float random_normalised();
 		static float random_clamped();
 		static float constrain(float num, float min, float max);
+		static void draw_circle(float radius);
 };
 
 #endif

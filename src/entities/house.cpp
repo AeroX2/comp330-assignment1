@@ -12,14 +12,12 @@ House::House(Vector position, Vector size, int peak) :
 }
 
 void House::redraw() {
-	Vector bottom_left = position;
-    Vector top_left = Vector(bottom_left.x, bottom_left.y+size.y);
-    Vector top_right = Vector(bottom_left.x+size.x, bottom_left.y+size.y);
+	Entity::redraw();
 
-	glRecti(bottom_left.x, bottom_left.y, top_right.x, top_right.y);
+	glRecti(-size.x/2, -size.y/2, size.x/2, size.y/2);
 	glBegin(GL_POLYGON);
-	  glVertex2i(top_left.x, top_left.y);
-	  glVertex2i(top_left.x+size.x/2,top_left.y+peak);
-	  glVertex2i(top_right.x, top_right.y);
+	  glVertex2i(-size.x/2, size.y/2);
+	  glVertex2i(0,size.y/2+peak);
+	  glVertex2i(size.x/2, size.y/2);
 	glEnd();
 }

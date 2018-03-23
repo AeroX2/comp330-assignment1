@@ -10,12 +10,16 @@
 
 #define debug(x) std::cout << x << std::endl
 
-const static double M_PI = 3.14159265358979323846264338327950288;
-const static long CLOCKS_PER_SEC = 1000000;
-const static double FRAME_RATE = 1/60.0f;
-
 static int WINDOW_WIDTH = 1000;
 static int WINDOW_HEIGHT = 750;
+
+const static double M_PI = 3.14159265358979323846264338327950288;
+const static double FRAME_RATE = 1/60.0f;
+const static long CLOCKS_PER_SEC = 1000000;
+
+const static int MOUSE_POINT_DISTANCE = 100;
+const static float HELICOPTER_BLADE_SPIN_RATE = 10.0f;
+const static int FIRE_TICK_OVER = 2;
 
 #define HOUSE1_PARAMETERS Vector(350,400),Vector(50,30),30
 #define HOUSE2_PARAMETERS Vector(500,600),Vector(100,80),40
@@ -26,8 +30,5 @@ static int WINDOW_HEIGHT = 750;
 #define FIRE3_PARAMETERS Vector(200,700),Vector(0,0)
 
 #define LAKE_PARAMETERS Vector(750,-80),Vector(0,0)
-
-const static float HELICOPTER_SPIN_RATE = 10.0f;
-const static int FIRE_TICK_OVER = 2;
 
 #endif /* CONSTANTS_HPP_ */

@@ -63,5 +63,20 @@ void World::redraw() {
 			entity->redraw();
 		glPopMatrix();
 	}
+
+	for (Vector point : mouse_points) {
+		glPushMatrix();
+			glTranslatef(point.x, point.y, 0);
+			glColor3ub(255,255,255);
+			Utils::draw_circle(5);
+		glPopMatrix();
+	}
+}
+
+void World::mouse_point(int x, int y) {
+	Vector current_point = Vector(x,y);
+	if (mouse_points.size() <= 0 || (current_point - mouse_points.back()).fake_distance() > MOUSE_POINT_DISTANCE) {
+		mouse_points.push_back(current_point);
+	}
 }
 

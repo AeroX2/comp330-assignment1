@@ -38,3 +38,12 @@ float Utils::constrain(float num, float min, float max) {
 		return max;
 	return num;
 }
+
+void Utils::draw_circle(float radius) {
+	glBegin(GL_TRIANGLE_FAN);
+		for (int i = 0; i < 360; i++) {
+			float degInRad = i*M_PI/180;
+			glVertex2f(cos(degInRad)*radius,sin(degInRad)*radius);
+		}
+	glEnd();
+}

@@ -29,6 +29,8 @@ class World {
 		void init();
 		void update();
 		void redraw();
+
+		void mouse_point(int x, int y);
 	private:
 		int fps;
 		int frameCounter;
@@ -46,6 +48,7 @@ class World {
 		Lake lake;
 
 		vector<Entity*> entities;
+		vector<Vector> mouse_points;
 };
 
 #endif /* WORLD_HPP_ */

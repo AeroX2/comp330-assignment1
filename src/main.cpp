@@ -77,9 +77,13 @@ void keyDown(unsigned char key, int x, int y) {
  */
 void keyUp(unsigned char key, int x, int y) {
 	if (key == 'q') {
-		debug("Exiting")
+		debug("Exiting");
 		exit(0);
 	}
+}
+
+void mouseMove(int x, int y) {
+	world.mouse_point(x, WINDOW_HEIGHT-y);
 }
 
 void reshape(int width, int height) {
@@ -106,6 +110,7 @@ int main(int argc, char *argv[]) {
 	glutDisplayFunc(redraw);
 	glutKeyboardFunc(keyDown);
 	glutKeyboardUpFunc(keyUp);
+	glutMotionFunc(mouseMove);
 	//glutReshapeFunc(reshape);
 
 	debug("Starting gameloop");
