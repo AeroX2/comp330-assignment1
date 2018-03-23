@@ -6,7 +6,6 @@
  */
 
 #include "helicopter.hpp"
-#include "../constants.hpp"
 
 Helicopter::Helicopter() : Entity(Vector(WINDOW_WIDTH/2,WINDOW_HEIGHT/2), Vector(25,25)) {
 	bladeAngle = 0.0f;
@@ -17,7 +16,7 @@ void Helicopter::update() {
 }
 
 void Helicopter::redraw() {
-	glTranslatef(position.x, position.y, 0);
+	Entity::redraw();
 	glRecti(-size.x/2,-size.y/2,size.x/2,size.y/2);
 	glRecti(-3,-50,3,0);
 

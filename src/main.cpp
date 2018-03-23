@@ -76,7 +76,10 @@ void keyDown(unsigned char key, int x, int y) {
  * Keyboard callback function, called when a key is release
  */
 void keyUp(unsigned char key, int x, int y) {
-	if (key == 'q') exit(0);
+	if (key == 'q') {
+		debug("Exiting")
+		exit(0);
+	}
 }
 
 void reshape(int width, int height) {

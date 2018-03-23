@@ -5,16 +5,16 @@
  *      Author: James Ridey
  */
 
-#include <GL/freeglut.h>
-#include <stdio.h>
-
 #include "world.hpp"
-#include "constants.hpp"
 
 World::World() :
 	house1(HOUSE1_PARAMETERS),
 	house2(HOUSE2_PARAMETERS),
-	house3(HOUSE3_PARAMETERS) {
+	house3(HOUSE3_PARAMETERS),
+	fire1(FIRE1_PARAMETERS),
+	fire2(FIRE2_PARAMETERS),
+	fire3(FIRE3_PARAMETERS),
+	lake(LAKE_PARAMETERS) {
 	fps = 0;
 	frameCounter = 0;
 	previousTime = 0;
@@ -25,6 +25,12 @@ void World::init() {
 	entities.push_back(&house1);
 	entities.push_back(&house2);
 	entities.push_back(&house3);
+
+	entities.push_back(&fire1);
+	entities.push_back(&fire2);
+	entities.push_back(&fire3);
+
+	entities.push_back(&lake);
 }
 
 void World::update() {
