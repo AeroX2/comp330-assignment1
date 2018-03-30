@@ -8,6 +8,8 @@
 #ifndef WORLD_HPP_
 #define WORLD_HPP_
 
+#include <GL/freeglut.h>
+#include <stdio.h>
 #include <vector>
 
 #include "constants.hpp"
@@ -16,6 +18,8 @@
 #include "entities/helicopter.hpp"
 #include "entities/sesbase.hpp"
 #include "entities/house.hpp"
+#include "entities/fire.hpp"
+#include "entities/lake.hpp"
 
 using namespace std;
 
@@ -34,6 +38,12 @@ class World {
 		House house1;
 		House house2;
 		House house3;
+
+		Fire fire1;
+		Fire fire2;
+		Fire fire3;
+
+		Lake lake;
 
 		vector<Entity*> entities;
 };

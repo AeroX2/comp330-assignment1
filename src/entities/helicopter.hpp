@@ -8,6 +8,7 @@
 #ifndef ENTITIES_HELICOPTER_HPP_
 #define ENTITIES_HELICOPTER_HPP_
 
+#include "../constants.hpp"
 #include "entity.hpp"
 
 class Helicopter : public Entity {

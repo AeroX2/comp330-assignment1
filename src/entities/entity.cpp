@@ -31,4 +31,6 @@ void Entity::update() {
 
 }
 
-void Entity::redraw() {}
+void Entity::redraw() {
+	glTranslatef(position.x, position.y, 0);
+}
