@@ -4,11 +4,14 @@
  * Date: March 2018
  */
 
-#include <GL/glut.h>
+#include <GL/freeglut.h>
 #include <windows.h>
 
 #include "constants.hpp"
 #include "world.hpp"
+
+int WINDOW_WIDTH = INITIAL_WINDOW_WIDTH;
+int WINDOW_HEIGHT = INITIAL_WINDOW_HEIGHT;
 
 World world;
 double currentTime = 0;
@@ -59,9 +62,10 @@ void gameloop() {
 	accumulator += frameTime;
 
 	while (accumulator >= FRAME_RATE) {
+		glutMainLoopEvent();
 		update();
-		accumulator -= FRAME_RATE;
 		glutPostRedisplay();
+		accumulator -= FRAME_RATE;
 	}
 	Sleep(1);
 }
@@ -69,25 +73,27 @@ void gameloop() {
 /*
  * Keyboard callback function, called when a key is pressed
  */
-void keyDown(unsigned char key, int x, int y) {
+void key_down(unsigned char key, int x, int y) {
 }
 
 /*
  * Keyboard callback function, called when a key is release
  */
-void keyUp(unsigned char key, int x, int y) {
+void key_up(unsigned char key, int x, int y) {
 	if (key == 'q') exit(0);
 }
 
 void reshape(int width, int height) {
-	//TODO This function is not correctly resizing the window
-	//const GLfloat aspectRatio = (GLfloat)width / (GLfloat)height;
-	//gluOrtho2D(-aspectRatio, aspectRatio, -1.0f, 1.0f);
-	//gluOrtho2D(0, width, 0, height);
+	int x = (width-INITIAL_WINDOW_WIDTH)/2;
+	int y = (height-INITIAL_WINDOW_HEIGHT)/2;
+	gluOrtho2D(x, y, INITIAL_WINDOW_WIDTH, INITIAL_WINDOW_HEIGHT);
+	glViewport(0,0,width,height);
 
 	WINDOW_WIDTH = width;
 	WINDOW_HEIGHT = height;
 }
+
+void mouse_drag(int x, int y) {}
 
 int main(int argc, char *argv[]) {
 	debug("Starting up");
@@ -99,15 +105,16 @@ int main(int argc, char *argv[]) {
 
 	debug("Registering callbacks");
 	//Register the GLUT callbacks
-	glutIdleFunc(gameloop);
 	glutDisplayFunc(redraw);
-	glutKeyboardFunc(keyDown);
-	glutKeyboardUpFunc(keyUp);
-	//glutReshapeFunc(reshape);
+	glutKeyboardFunc(key_down);
+	glutKeyboardUpFunc(key_up);
+	glutReshapeFunc(reshape);
 
 	debug("Starting gameloop");
 	init();
-	glutMainLoop();
+	while (true) {
+		gameloop();
+	}
 
 	return 0;
 }

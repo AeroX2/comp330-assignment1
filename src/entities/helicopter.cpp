@@ -23,6 +23,7 @@ void Helicopter::redraw() {
 
 	glPushMatrix();
 		glRotatef(bladeAngle,0,0,1);
-		glRecti(-5,-40,5,40);
+		glRecti(-3,-40,3,40);
+		glRecti(-40,-3,40,3);
 	glPopMatrix();
 }
