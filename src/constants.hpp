@@ -8,14 +8,14 @@
 #ifndef CONSTANTS_HPP_
 #define CONSTANTS_HPP_
 
-#define debug(x) std::cout << x << std::endl
+#define debug(x) std::cout << (x) << std::endl
 
 static int WINDOW_WIDTH = 1000;
 static int WINDOW_HEIGHT = 750;
 
-const static double M_PI = 3.14159265358979323846264338327950288;
-const static double FRAME_RATE = 1/60.0f;
-const static long CLOCKS_PER_SEC = 1000000;
+const double M_PI = 3.14159265358979323846264338327950288;
+const double FRAME_RATE = 1/60.0f;
+const long CLOCKS_PER_SEC = 1000000;
 
 const static int MOUSE_POINT_DISTANCE = 100;
 const static float HELICOPTER_BLADE_SPIN_RATE = 10.0f;
