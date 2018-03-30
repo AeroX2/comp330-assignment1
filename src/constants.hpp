@@ -10,8 +10,11 @@
 
 #define debug(x) std::cout << (x) << std::endl
 
-static int WINDOW_WIDTH = 1000;
-static int WINDOW_HEIGHT = 750;
+const int INITIAL_WINDOW_WIDTH = 1000;
+const int INITIAL_WINDOW_HEIGHT = 750;
+
+extern int WINDOW_WIDTH;
+extern int WINDOW_HEIGHT;
 
 const double M_PI = 3.14159265358979323846264338327950288;
 const double FRAME_RATE = 1/60.0f;

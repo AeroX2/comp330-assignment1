@@ -8,7 +8,7 @@
 #ifndef ENTITIES_ENTITY_HPP_
 #define ENTITIES_ENTITY_HPP_
 
-#include <GL/glut.h>
+#include <GL/freeglut.h>
 #include "vector.hpp"
 
 class Entity {
