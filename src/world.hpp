@@ -11,6 +11,7 @@
 #include <GL/freeglut.h>
 #include <stdio.h>
 #include <vector>
+#include <queue>
 
 #include "constants.hpp"
 #include "entities/vector.hpp"

@@ -26,11 +26,11 @@ void Entity::update() {
 //	rotationVelocity += angleAcceleration
 	rotation += rotationVelocity;
 
-//	velocity += acceleration
 	position += velocity;
-
+    velocity += acceleration;
 }
 
 void Entity::redraw() {
 	glTranslatef(position.x, position.y, 0);
+    glRotatef(rotation, 0, 0, 1);
 }

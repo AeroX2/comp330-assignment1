@@ -16,8 +16,15 @@ class Helicopter : public Entity {
 		Helicopter();
 		void update();
 		void redraw();
-	private:
+		void set_target(Vector target);
+
+	void set_stop(bool stop);
+
+private:
+        bool stop;
 		float bladeAngle;
+        Vector target;
+
 };
 
 #endif /* ENTITIES_HELICOPTER_HPP_ */

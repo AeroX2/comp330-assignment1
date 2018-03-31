@@ -8,7 +8,7 @@ mt19937& Utils::random_engine() {
 float Utils::random_range_float(float min, float max) {
 	//Probably not such a great idea to recreate the distribution every time
 	//But neither is using it incorrectly
-	uniform_real_distribution<> distribution { min, max };
+	uniform_real_distribution<float> distribution { min, max };
 	return distribution(random_engine());
 }
 

@@ -13,23 +13,24 @@
 
 class Entity {
 	public:
-		Entity(Vector position, Vector size);
-		virtual ~Entity() {};
+		explicit Entity(Vector position, Vector size);
 
 		virtual void update();
 		virtual void redraw();
-	protected:
+
 		//Position vector
 		Vector position;
 		//Velocity vector
 		Vector velocity;
+        //Acceleration vector
+        Vector acceleration;
 		//Size vector
 		Vector size;
 
 		//Rotation angle in degrees
-		double rotation;
+		float rotation;
 		//Rotation velocity
-		double rotationVelocity;
+		float rotationVelocity;
 };
 
 #endif /* ENTITIES_ENTITY_HPP_ */

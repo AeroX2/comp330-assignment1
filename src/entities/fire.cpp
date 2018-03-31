@@ -8,7 +8,7 @@
 #include "fire.hpp"
 
 int layer_sizes[][2] = {{30,50},{20,30},{0,10}};
-int layer_colors[][3] = {{255,0,0},{255,165,0},{255,255,255}};
+unsigned char layer_colors[][3] = {{255,0,0},{255,165,0},{255,255,255}};
 
 Fire::Fire(Vector position, Vector size) : Entity(position, size) {
 	ticks = 0;
@@ -26,7 +26,7 @@ void Fire::new_fire() {
 	for (int i = 0; i < sizeof(layers)/sizeof(layers[0]); i++) {
 		layers[i].clear();
 		for (int ii = 0; ii < 360; ii++) {
-			float radius = Utils::random_range_int(layer_sizes[i][0], layer_sizes[i][1]);
+			int radius = Utils::random_range_int(layer_sizes[i][0], layer_sizes[i][1]);
 			layers[i].push_back(radius);
 		}
 	}

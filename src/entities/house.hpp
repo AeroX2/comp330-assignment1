@@ -13,7 +13,6 @@
 class House : public Entity {
 	public:
 		House(Vector position, Vector size, int peak);
-		virtual ~House() {};
 
 		void redraw();
 	private:

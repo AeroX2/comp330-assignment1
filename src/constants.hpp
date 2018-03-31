@@ -16,13 +16,18 @@ const int INITIAL_WINDOW_HEIGHT = 750;
 extern int WINDOW_WIDTH;
 extern int WINDOW_HEIGHT;
 
-const double M_PI = 3.14159265358979323846264338327950288;
-const double FRAME_RATE = 1/60.0f;
+const float M_PI = 3.141592;
+const float FRAME_RATE = 1/60.0f;
 const long CLOCKS_PER_SEC = 1000000;
 
-const static int MOUSE_POINT_DISTANCE = 100;
-const static float HELICOPTER_BLADE_SPIN_RATE = 10.0f;
-const static int FIRE_TICK_OVER = 2;
+const int MOUSE_POINT_DISTANCE = 100;
+const int HELICOPTER_POINT_DISTANCE = 30;
+
+const float HELICOPTER_MAX_SPEED = 5.0f;
+const float HELICOPTER_MAX_FORCE = 0.3f;
+const float HELICOPTER_STOP_DISTANCE = 100;
+const float HELICOPTER_BLADE_SPIN_RATE = 10.0f;
+const int FIRE_TICK_OVER = 2;
 
 #define HOUSE1_PARAMETERS Vector(350,400),Vector(50,30),30
 #define HOUSE2_PARAMETERS Vector(500,600),Vector(100,80),40

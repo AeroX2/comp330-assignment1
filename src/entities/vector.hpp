@@ -8,25 +8,33 @@ using namespace std;
 
 class Vector {
 	public:
-		Vector(double x = 0, double y = 0);
+        explicit Vector(float x = 0, float y = 0);
 
 		Vector operator+(const Vector& rhs);
 		Vector operator-(const Vector& rhs);
 		Vector operator*(const Vector& rhs);
-		Vector operator*(const float rhs);
+		Vector operator*(float rhs);
 
 		Vector& operator+=(const Vector& rhs);
 		Vector& operator-=(const Vector& rhs);
 		Vector& operator*=(const Vector& rhs);
-		Vector& operator*=(const float rhs);
+		Vector& operator*=(float rhs);
+
+        Vector& operator/=(float rhs);
 
 		float distance();
 		float fake_distance();
 		Vector normalise();
 		void print();
 
-		double x;
-		double y;
+		float x;
+		float y;
+
+    float angle();
+
+    Vector truncate(float max);
+
+    Vector limit(const float d);
 };
 
 #endif

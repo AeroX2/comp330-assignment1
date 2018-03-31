@@ -5,7 +5,6 @@
  */
 
 #include <GL/freeglut.h>
-#include <windows.h>
 
 #include "constants.hpp"
 #include "world.hpp"
@@ -16,6 +15,7 @@ int WINDOW_HEIGHT = INITIAL_WINDOW_HEIGHT;
 World world;
 double currentTime = 0;
 double accumulator = 0;
+bool running = true;
 
 /* Initialization function  */
 void init() {
@@ -82,11 +82,11 @@ void key_down(unsigned char key, int x, int y) {
 void key_up(unsigned char key, int x, int y) {
 	if (key == 'q') {
         debug("Exiting");
-        exit(0);
+        running = false;
     }
 }
 
-void mouseMove(int x, int y) {
+void mouse_move(int x, int y) {
     world.mouse_point(x, WINDOW_HEIGHT-y);
 }
 
@@ -112,14 +112,14 @@ int main(int argc, char *argv[]) {
 	//Register the GLUT callbacks
 	glutIdleFunc(gameloop);
 	glutDisplayFunc(redraw);
-	glutKeyboardFunc(keyDown);
-	glutKeyboardUpFunc(keyUp);
+	glutKeyboardFunc(key_down);
+	glutKeyboardUpFunc(key_up);
     glutMotionFunc(mouse_move);
     glutReshapeFunc(reshape);
 
 	debug("Starting gameloop");
 	init();
-	while (true) {
+	while (running) {
 		gameloop();
 	}
 
