@@ -2,7 +2,7 @@
  * Lake.hpp
  *
  *  Created on: 23 Mar. 2018
- *      Author: James Ridey
+ *      Author: James Ridey (44805632)
  */
 
 #ifndef ENTITIES_SPLASH_HPP_

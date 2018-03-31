@@ -2,7 +2,7 @@
  * world.cpp
  *
  *  Created on: 10 Mar. 2018
- *      Author: James Ridey
+ *      Author: James Ridey (44805632)
  */
 
 #include "world.hpp"
@@ -18,7 +18,8 @@ World::World() :
     lake(LAKE_PARAMETERS) {
     fps = 0;
     frameCounter = 0;
-    previousTime = 0;
+    previousFPSTime = 0;
+    previousClickTime = 0;
 }
 
 void World::init() {
@@ -41,6 +42,8 @@ void World::update() {
         entity->update();
     }
 
+    cout << lake.check_collision(helicopter) << endl;
+
     if ((!mouse_points.empty()) && (helicopter.position - mouse_points.front()).distance() <= HELICOPTER_POINT_DISTANCE) {
         mouse_points.erase(mouse_points.begin());
         if (!mouse_points.empty()) {
@@ -54,10 +57,10 @@ void World::update() {
 void World::redraw() {
     //Calculate the current FPS
     int currentTime = glutGet(GLUT_ELAPSED_TIME);
-    if ((currentTime-previousTime) >= 1000) {
+    if ((currentTime-previousFPSTime) >= 1000) {
         fps = frameCounter;
         frameCounter = 0;
-        previousTime = currentTime;
+        previousFPSTime = currentTime;
     }
     frameCounter++;
     char tempString[50];
@@ -77,20 +80,20 @@ void World::redraw() {
 
     //Draw the points, first point being a circle, the rest a line
     if (!mouse_points.empty()) {
+        glColor3ub(255,255,255);
         glPushMatrix();
             Vector first_point = mouse_points.front();
             glTranslatef(first_point.x, first_point.y, 0);
             Utils::draw_circle(5);
         glPopMatrix();
+        glPushMatrix();
+            glBegin(GL_LINE_STRIP);
+                for (Vector point : mouse_points) {
+                    glVertex2d(point.x, point.y);
+                }
+            glEnd();
+        glPopMatrix();
     }
-    glPushMatrix();
-        glBegin(GL_LINE_STRIP);
-            for (Vector point : mouse_points) {
-                glColor3ub(255,255,255);
-                glVertex2d(point.x, point.y);
-            }
-        glEnd();
-    glPopMatrix();
 }
 
 void World::mouse_point(int x, int y) {
@@ -105,8 +108,12 @@ void World::mouse_point(int x, int y) {
     }
 }
 
-void World::mouse_right_click(int x, int y) {
-    Entity* entity = new Splash(helicopter.position, Vector());
-    entities.push_back(entity);
+void World::mouse_click(int x, int y) {
+    int currentTime = glutGet(GLUT_ELAPSED_TIME);
+    if ((currentTime - previousClickTime) <= DOUBLE_CLICK_TIME) {
+        Entity* entity = new Splash(helicopter.position, Vector());
+        entities.push_back(entity);
+    }
+    previousClickTime = currentTime;
 }
 

@@ -2,7 +2,7 @@
  * Helicopter.cpp
  *
  *  Created on: 10 Mar. 2018
- *      Author: James Ridey
+ *      Author: James Ridey (44805632)
  */
 
 #include "helicopter.hpp"
@@ -21,6 +21,7 @@ void Helicopter::update() {
 
     if (!stop) {
         //Steer towards the current point
+        //Based of the code found on: https://www.askforgametask.com/tutorial/steering-behaviors-seek/
         Vector desired_velocity = (target - position).normalise() * HELICOPTER_MAX_SPEED;
         Vector steering = (desired_velocity - velocity).limit(HELICOPTER_MAX_FORCE);
         velocity = (velocity + steering).limit(HELICOPTER_MAX_SPEED);
@@ -29,14 +30,13 @@ void Helicopter::update() {
         //Slow down helicopter after last point
         velocity *= 0.95f;
     }
-
 }
 
 void Helicopter::redraw() {
 	Entity::redraw();
 
     //Set the color white
-    glColor3f(1,1,1);
+    glColor4ub(255,255,255,250);
 
     //Draw the helicopter body
     glRectf(-size.x/2,-size.y/2,size.x/2,size.y/2);
@@ -51,10 +51,13 @@ void Helicopter::redraw() {
     glPopMatrix();
 }
 
+//Set the target to fly towards
 void Helicopter::set_target(Vector target) {
 	this->target = target;
 }
 
+//If there is no target left, stop should be true
+//Otherwise this should be set to true
 void Helicopter::set_stop(bool stop) {
     this->stop = stop;
 }

@@ -2,7 +2,7 @@
  * Entity.cpp
  *
  *  Created on: 10 Mar. 2018
- *      Author: James Ridey
+ *      Author: James Ridey (44805632)
  */
 
 #include "entity.hpp"

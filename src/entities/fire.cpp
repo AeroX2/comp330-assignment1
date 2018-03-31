@@ -2,7 +2,7 @@
  * Fire.cpp
  *
  *  Created on: 23 Mar. 2018
- *      Author: James Ridey
+ *      Author: James Ridey (44805632)
  */
 
 #include "fire.hpp"

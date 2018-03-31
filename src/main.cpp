@@ -1,6 +1,6 @@
 /*
  * main.cpp -- Helicopter game
- * Authors: James Ridey
+ * Author: James Ridey (44805632)
  * Date: March 2018
  */
 
@@ -22,7 +22,7 @@ void init() {
 	debug("Init");
 
 	//Initialize a few OpenGL parameters
-	glClearColor(0.0, 0.0, 0.0, 0.0);
+	glClearColor(0.8863, 0.6980, 0.4745, 1);
 	glColor3f(1.0, 1.0, 1.0);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
@@ -95,12 +95,13 @@ void mouse_move(int x, int y) {
 }
 
 void mouse_click(int button, int state, int x, int y) {
-	if (state == GLUT_UP && button == GLUT_RIGHT_BUTTON) {
-		world.mouse_right_click(x, y);
+	if (state == GLUT_UP && button == GLUT_LEFT_BUTTON) {
+		world.mouse_click(x, y);
 	}
 }
 
 void reshape(int width, int height) {
+    //TODO A reminder that this is not currently working
 	int x = (width-INITIAL_WINDOW_WIDTH)/2;
 	int y = (height-INITIAL_WINDOW_HEIGHT)/2;
 	gluOrtho2D(x, y, INITIAL_WINDOW_WIDTH, INITIAL_WINDOW_HEIGHT);

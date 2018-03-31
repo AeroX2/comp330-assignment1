@@ -2,7 +2,7 @@
  * Lake.cpp
  *
  *  Created on: 23 Mar. 2018
- *      Author: James Ridey
+ *      Author: James Ridey (44805632)
  */
 
 #include "lake.hpp"
@@ -25,6 +25,27 @@ int coords[][2] = {
 		{ -144 , 73 }, { -136 , 58 }, { -139 , 39 }, { -126 , 21 }, { -106 , 13 },
 };
 
+//int coords[][2] = {
+//        {-144, 73},
+//        {-139, 39},
+//        {-126, 21},
+//        {-103, 11},
+//        {-53, 4},
+//        {-19, 2},
+//        {50, 0},
+//        {412, 192},
+//        {420, 204},
+//        {424, 221},
+//        {371, 285},
+//        {153, 456},
+//        {134, 466},
+//        {116, 463},
+//        {90, 437},
+//        {-63, 238},
+//        {-112, 148},
+//        {-137, 90}
+//};
+
 Lake::Lake(Vector position, Vector size) : Entity(position, size) {
 }
 
@@ -37,5 +58,29 @@ void Lake::redraw() {
 			glVertex2f(coord[0], coord[1]);
 		}
 	glEnd();
+}
 
+//Adapted from: https://en.wikipedia.org/wiki/Even-odd_rule
+//Used for checking if a point in within a polygon
+//Mainly used for checking if the helicopter is inside the lake to take water
+bool Lake::check_collision(Entity entity) {
+    auto hx = (int)entity.position.x;
+    auto hy = (int)entity.position.y;
+    int num = sizeof(coords)/sizeof(coords[0]);
+
+    int j = num-1;
+    bool c = false;
+    for (int i = 0; i < num; i++) {
+        auto l0x = (int)(coords[i][0] + position.x);
+        auto l0y = (int)(coords[i][1] + position.y);
+        auto l1x = (int)(coords[j][0] + position.x);
+        auto l1y = (int)(coords[j][1] + position.y);
+
+        if (((l0y > hy) != (l1y > hy)) &&
+            (hx < l0x + (l1x - l0x) * (hy - l0y) / (l1y - l0y))) {
+            c = !c;
+        }
+        j = i;
+    }
+    return c;
 }

@@ -2,7 +2,7 @@
  * house.h
  *
  *  Created on: 10 Mar. 2018
- *      Author: James Ridey
+ *      Author: James Ridey (44805632)
  */
 
 #ifndef ENTITIES_HOUSE_HPP_

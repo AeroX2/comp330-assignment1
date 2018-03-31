@@ -2,7 +2,7 @@
  * world.hpp
  *
  *  Created on: 10 Mar. 2018
- *      Author: James Ridey
+ *      Author: James Ridey (44805632)
  */
 
 #ifndef WORLD_HPP_
@@ -29,15 +29,15 @@ class World {
 		void init();
 		void update();
 		void redraw();
-
 		void mouse_point(int x, int y);
 
-    void mouse_right_click(int x, int y);
+	void mouse_click(int x, int y);
 
 private:
 		int fps;
 		int frameCounter;
-		int previousTime;
+		int previousFPSTime;
+        int previousClickTime;
 
 		Helicopter helicopter;
 		House house1;
@@ -52,6 +52,7 @@ private:
 
 		vector<Entity*> entities;
 		vector<Vector> mouse_points;
+
 };
 
 #endif /* WORLD_HPP_ */

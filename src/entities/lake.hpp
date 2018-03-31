@@ -2,7 +2,7 @@
  * Lake.hpp
  *
  *  Created on: 23 Mar. 2018
- *      Author: James Ridey
+ *      Author: James Ridey (44805632)
  */
 
 #ifndef ENTITIES_LAKE_HPP_
@@ -18,6 +18,7 @@ class Lake : public Entity {
 	public:
 		Lake(Vector position, Vector size);
 		void redraw();
+        bool check_collision(Entity entity);
 };
 
 #endif /* ENTITIES_FIRE_HPP_ */
