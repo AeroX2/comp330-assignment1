@@ -13,7 +13,7 @@ int WINDOW_WIDTH = INITIAL_WINDOW_WIDTH;
 int WINDOW_HEIGHT = INITIAL_WINDOW_HEIGHT;
 
 World world;
-double currentTime = 0;
+double current_time = 0;
 double accumulator = 0;
 bool running = true;
 
@@ -33,7 +33,7 @@ void init() {
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	world.init();
-	currentTime = glutGet(GLUT_ELAPSED_TIME);
+	current_time = glutGet(GLUT_ELAPSED_TIME);
 }
 
 /*
@@ -50,6 +50,15 @@ void update() {
 void redraw() {
 	glClear(GL_COLOR_BUFFER_BIT);
 	world.redraw();
+
+    glColor3b(0,0,0);
+    glRasterPos2i(10, WINDOW_HEIGHT-50);
+    glutBitmapString(GLUT_BITMAP_HELVETICA_12,
+                     reinterpret_cast<const unsigned char *>("Double click over the lake\nto fill up on water"));
+    glRasterPos2i(10, WINDOW_HEIGHT-85);
+    glutBitmapString(GLUT_BITMAP_HELVETICA_12,
+                     reinterpret_cast<const unsigned char *>("Double click anywhere else\nto dump the water collected"));
+
 	glutSwapBuffers();
 }
 
@@ -59,9 +68,9 @@ void redraw() {
  * https://gafferongames.com/post/fix_your_timestep/
  */
 void gameloop() {
-	double newTime = glutGet(GLUT_ELAPSED_TIME);
-	double frameTime = ((newTime - currentTime) * 1000) / CLOCKS_PER_SEC;
-	currentTime = newTime;
+	double new_time = glutGet(GLUT_ELAPSED_TIME);
+	double frameTime = ((new_time - current_time) * 1000) / CLOCKS_PER_SEC;
+	current_time = new_time;
 
 	accumulator += frameTime;
 

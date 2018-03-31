@@ -129,7 +129,7 @@ void World::mouse_click(int x, int y) {
             float& water = helicopter.get_water();
             if (water >= SPLASH_WATER_AMOUNT) {
                 water -= SPLASH_WATER_AMOUNT;
-                Entity *entity = new Splash(helicopter.position, Vector());
+                Entity *entity = new Splash(helicopter.position, Vector(50,0));
                 entities.push_back(entity);
             }
         }

@@ -17,7 +17,11 @@
 class Splash : public Entity {
 	public:
 		Splash(Vector position, Vector size);
+        void update();
 		void redraw();
+    private:
+        int time_elapsed;
+        float opacity;
 };
 
 #endif /* ENTITIES_SPLASH_HPP_ */
