@@ -16,14 +16,17 @@ Helicopter::Helicopter() : Entity(Vector(INITIAL_WINDOW_WIDTH/2, INITIAL_WINDOW_
 void Helicopter::update() {
     Entity::update();
 
+    //Spin the helicopter blades
     bladeAngle += HELICOPTER_BLADE_SPIN_RATE;
 
     if (!stop) {
+        //Steer towards the current point
         Vector desired_velocity = (target - position).normalise() * HELICOPTER_MAX_SPEED;
         Vector steering = (desired_velocity - velocity).limit(HELICOPTER_MAX_FORCE);
         velocity = (velocity + steering).limit(HELICOPTER_MAX_SPEED);
         rotation = velocity.angle() - 90;
     } else {
+        //Slow down helicopter after last point
         velocity *= 0.95f;
     }
 

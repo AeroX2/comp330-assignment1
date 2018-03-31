@@ -17,7 +17,6 @@
 #include "entities/vector.hpp"
 #include "entities/entity.hpp"
 #include "entities/helicopter.hpp"
-#include "entities/sesbase.hpp"
 #include "entities/house.hpp"
 #include "entities/fire.hpp"
 #include "entities/lake.hpp"
@@ -32,7 +31,10 @@ class World {
 		void redraw();
 
 		void mouse_point(int x, int y);
-	private:
+
+    void mouse_right_click(int x, int y);
+
+private:
 		int fps;
 		int frameCounter;
 		int previousTime;

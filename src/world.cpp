@@ -6,6 +6,7 @@
  */
 
 #include "world.hpp"
+#include "entities/splash.hpp"
 
 World::World() :
     house1(HOUSE1_PARAMETERS),
@@ -75,13 +76,13 @@ void World::redraw() {
     }
 
     //Draw the points, first point being a circle, the rest a line
-    glPushMatrix();
-        if (!mouse_points.empty()) {
+    if (!mouse_points.empty()) {
+        glPushMatrix();
             Vector first_point = mouse_points.front();
             glTranslatef(first_point.x, first_point.y, 0);
             Utils::draw_circle(5);
-        }
-    glPopMatrix();
+        glPopMatrix();
+    }
     glPushMatrix();
         glBegin(GL_LINE_STRIP);
             for (Vector point : mouse_points) {
@@ -102,5 +103,10 @@ void World::mouse_point(int x, int y) {
     if (mouse_points.empty() || (current_point - mouse_points.back()).fake_distance() > MOUSE_POINT_DISTANCE) {
         mouse_points.push_back(current_point);
     }
+}
+
+void World::mouse_right_click(int x, int y) {
+    Entity* entity = new Splash(helicopter.position, Vector());
+    entities.push_back(entity);
 }
 

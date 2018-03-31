@@ -28,6 +28,10 @@ void init() {
 	glLoadIdentity();
 	gluOrtho2D(0, WINDOW_WIDTH, 0, WINDOW_HEIGHT);
 
+    //Enable transparency
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 	world.init();
 	currentTime = glutGet(GLUT_ELAPSED_TIME);
 }
@@ -90,6 +94,12 @@ void mouse_move(int x, int y) {
     world.mouse_point(x, WINDOW_HEIGHT-y);
 }
 
+void mouse_click(int button, int state, int x, int y) {
+	if (state == GLUT_UP && button == GLUT_RIGHT_BUTTON) {
+		world.mouse_right_click(x, y);
+	}
+}
+
 void reshape(int width, int height) {
 	int x = (width-INITIAL_WINDOW_WIDTH)/2;
 	int y = (height-INITIAL_WINDOW_HEIGHT)/2;
@@ -115,6 +125,7 @@ int main(int argc, char *argv[]) {
 	glutKeyboardFunc(key_down);
 	glutKeyboardUpFunc(key_up);
     glutMotionFunc(mouse_move);
+	glutMouseFunc(mouse_click);
     glutReshapeFunc(reshape);
 
 	debug("Starting gameloop");
