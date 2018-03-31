@@ -8,8 +8,12 @@
 #include "helicopter.hpp"
 
 Helicopter::Helicopter() : Entity(Vector(INITIAL_WINDOW_WIDTH/2, INITIAL_WINDOW_HEIGHT/2), Vector(25,25)) {
+    filling = false;
     stop = true;
-	bladeAngle = 0.0f;
+
+    water = 0;
+	bladeAngle = 0;
+
     target = Vector(INITIAL_WINDOW_WIDTH/2, INITIAL_WINDOW_HEIGHT/2);
 }
 
@@ -30,6 +34,10 @@ void Helicopter::update() {
         //Slow down helicopter after last point
         velocity *= 0.95f;
     }
+
+    if (filling && water <= HELICOPTER_MAX_WATER) {
+        water += HELICOPTER_WATER_FILL_RATE;
+    }
 }
 
 void Helicopter::redraw() {
@@ -49,6 +57,19 @@ void Helicopter::redraw() {
         glRecti(-3,-40,3,40);
         glRecti(-40,-3,40,3);
     glPopMatrix();
+
+
+    //This is deliberate, we are popping out of the
+    //entity matrix and drawing on the screen instead
+    glPopMatrix();
+        //Draw water meter
+        glColor3ub(0,0,0);
+        glRasterPos2i(65, 10);
+        glutBitmapString(GLUT_BITMAP_HELVETICA_12, reinterpret_cast<const unsigned char *>("Water meter"));
+
+        glColor3ub(0,0,255);
+        glRectf(10,10,60,15+300*(water/HELICOPTER_MAX_WATER));
+    glPushMatrix();
 }
 
 //Set the target to fly towards
@@ -60,4 +81,13 @@ void Helicopter::set_target(Vector target) {
 //Otherwise this should be set to true
 void Helicopter::set_stop(bool stop) {
     this->stop = stop;
+}
+
+//
+void Helicopter::set_filling(bool filling) {
+    this->filling = filling;
+}
+
+float& Helicopter::get_water() {
+    return water;
 }

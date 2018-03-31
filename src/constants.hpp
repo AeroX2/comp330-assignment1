@@ -24,9 +24,13 @@ const int DOUBLE_CLICK_TIME = 300;
 const int MOUSE_POINT_DISTANCE = 100;
 const int HELICOPTER_POINT_DISTANCE = 30;
 
+const float SPLASH_WATER_AMOUNT = 10.0f;
+
 const float HELICOPTER_MAX_SPEED = 5.0f;
 const float HELICOPTER_MAX_FORCE = 0.3f;
+const float HELICOPTER_MAX_WATER = 50.0f;
 const float HELICOPTER_BLADE_SPIN_RATE = 10.0f;
+const float HELICOPTER_WATER_FILL_RATE = 0.1f;
 const int FIRE_TICK_OVER = 2;
 
 #define HOUSE1_PARAMETERS Vector(450,260),Vector(70,50),30
@@ -37,6 +41,6 @@ const int FIRE_TICK_OVER = 2;
 #define FIRE2_PARAMETERS Vector(800,600),Vector(0,0)
 #define FIRE3_PARAMETERS Vector(200,700),Vector(0,0)
 
-#define LAKE_PARAMETERS Vector(750,-80),Vector(0,0)
+#define LAKE_PARAMETERS Vector(850,-80),Vector(0,0)
 
 #endif /* CONSTANTS_HPP_ */

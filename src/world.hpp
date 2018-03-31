@@ -30,14 +30,15 @@ class World {
 		void update();
 		void redraw();
 		void mouse_point(int x, int y);
+        void mouse_click(int x, int y);
 
-	void mouse_click(int x, int y);
-
-private:
+    private:
 		int fps;
 		int frameCounter;
 		int previousFPSTime;
         int previousClickTime;
+
+		bool filling_mode;
 
 		Helicopter helicopter;
 		House house1;

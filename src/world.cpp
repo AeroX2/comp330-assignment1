@@ -16,10 +16,13 @@ World::World() :
     fire2(FIRE2_PARAMETERS),
     fire3(FIRE3_PARAMETERS),
     lake(LAKE_PARAMETERS) {
+
     fps = 0;
     frameCounter = 0;
     previousFPSTime = 0;
     previousClickTime = 0;
+
+    filling_mode = false;
 }
 
 void World::init() {
@@ -42,7 +45,15 @@ void World::update() {
         entity->update();
     }
 
-    cout << lake.check_collision(helicopter) << endl;
+    //If there is a collision with the lake
+    //the mouse click event fills the helicopter instead of dumping it
+    //Otherwise prevent the helicopter from filling
+    if (lake.check_collision(helicopter)) {
+        filling_mode = true;
+    } else {
+        filling_mode = false;
+        helicopter.set_filling(false);
+    }
 
     if ((!mouse_points.empty()) && (helicopter.position - mouse_points.front()).distance() <= HELICOPTER_POINT_DISTANCE) {
         mouse_points.erase(mouse_points.begin());
@@ -87,6 +98,7 @@ void World::redraw() {
             Utils::draw_circle(5);
         glPopMatrix();
         glPushMatrix();
+            glLineWidth(3);
             glBegin(GL_LINE_STRIP);
                 for (Vector point : mouse_points) {
                     glVertex2d(point.x, point.y);
@@ -111,9 +123,19 @@ void World::mouse_point(int x, int y) {
 void World::mouse_click(int x, int y) {
     int currentTime = glutGet(GLUT_ELAPSED_TIME);
     if ((currentTime - previousClickTime) <= DOUBLE_CLICK_TIME) {
-        Entity* entity = new Splash(helicopter.position, Vector());
-        entities.push_back(entity);
+        if (filling_mode) {
+            helicopter.set_filling(true);
+        } else {
+            float& water = helicopter.get_water();
+            if (water >= SPLASH_WATER_AMOUNT) {
+                water -= SPLASH_WATER_AMOUNT;
+                Entity *entity = new Splash(helicopter.position, Vector());
+                entities.push_back(entity);
+            }
+        }
+        previousClickTime = 0;
+    } else {
+        previousClickTime = currentTime;
     }
-    previousClickTime = currentTime;
 }
 

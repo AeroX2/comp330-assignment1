@@ -50,7 +50,7 @@ void update() {
 void redraw() {
 	glClear(GL_COLOR_BUFFER_BIT);
 	world.redraw();
-	glFlush();
+	glutSwapBuffers();
 }
 
 /*
