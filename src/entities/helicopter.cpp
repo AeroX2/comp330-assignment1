@@ -7,14 +7,14 @@
 
 #include "helicopter.hpp"
 
-Helicopter::Helicopter() : Entity(Vector(INITIAL_WINDOW_WIDTH/2, INITIAL_WINDOW_HEIGHT/2), Vector(25,25)) {
+Helicopter::Helicopter() : Entity(Vector(INITIAL_WINDOW_WIDTH / 2, INITIAL_WINDOW_HEIGHT / 2), Vector(25, 25)) {
     filling = false;
     stop = true;
 
     water = 0;
-	bladeAngle = 0;
+    bladeAngle = 0;
 
-    target = Vector(INITIAL_WINDOW_WIDTH/2, INITIAL_WINDOW_HEIGHT/2);
+    target = Vector(INITIAL_WINDOW_WIDTH / 2, INITIAL_WINDOW_HEIGHT / 2);
 }
 
 void Helicopter::update() {
@@ -41,40 +41,39 @@ void Helicopter::update() {
 }
 
 void Helicopter::redraw() {
-	Entity::redraw();
+    Entity::redraw();
 
     //Set the color white
-    glColor4ub(255,255,255,250);
+    glColor4ub(255, 255, 255, 250);
 
     //Draw the helicopter body
-    glRectf(-size.x/2,-size.y/2,size.x/2,size.y/2);
+    glRectf(-size.x / 2, -size.y / 2, size.x / 2, size.y / 2);
     //And tail
-    glRecti(-3,-50,3,0);
+    glRecti(-3, -50, 3, 0);
 
     //Draw the helicopter blade
     glPushMatrix();
-        glRotatef(bladeAngle,0,0,1);
-        glRecti(-3,-40,3,40);
-        glRecti(-40,-3,40,3);
+        glRotatef(bladeAngle, 0, 0, 1);
+        glRecti(-3, -40, 3, 40);
+        glRecti(-40, -3, 40, 3);
     glPopMatrix();
-
 
     //This is deliberate, we are popping out of the
     //entity matrix and drawing on the screen instead
     glPopMatrix();
         //Draw water meter
-        glColor3ub(0,0,0);
+        glColor3ub(0, 0, 0);
         glRasterPos2i(65, 10);
         glutBitmapString(GLUT_BITMAP_HELVETICA_12, reinterpret_cast<const unsigned char *>("Water meter"));
 
-        glColor3ub(0,0,255);
-        glRectf(10,10,60,15+300*(water/HELICOPTER_MAX_WATER));
+        glColor3ub(0, 0, 255);
+        glRectf(10, 10, 60, 15 + 300 * (water / HELICOPTER_MAX_WATER));
     glPushMatrix();
 }
 
 //Set the target to fly towards
 void Helicopter::set_target(Vector target) {
-	this->target = target;
+    this->target = target;
 }
 
 //If there is no target left, stop should be true
@@ -88,6 +87,6 @@ void Helicopter::set_filling(bool filling) {
     this->filling = filling;
 }
 
-float& Helicopter::get_water() {
+float &Helicopter::get_water() {
     return water;
 }

@@ -24,35 +24,35 @@
 using namespace std;
 
 class World {
-	public:
-		World();
-		void init();
-		void update();
-		void redraw();
-		void mouse_point(int x, int y);
+    public:
+        World();
+        void init();
+        void update();
+        void redraw();
+        void mouse_point(int x, int y);
         void mouse_click(int x, int y);
 
     private:
-		int fps;
-		int frameCounter;
-		int previousFPSTime;
+        int fps;
+        int frameCounter;
+        int previousFPSTime;
         int previousClickTime;
 
-		bool filling_mode;
+        bool filling_mode;
 
-		Helicopter helicopter;
-		House house1;
-		House house2;
-		House house3;
+        Helicopter helicopter;
+        House house1;
+        House house2;
+        House house3;
 
-		Fire fire1;
-		Fire fire2;
-		Fire fire3;
+        Fire fire1;
+        Fire fire2;
+        Fire fire3;
 
-		Lake lake;
+        Lake lake;
 
-		vector<Entity*> entities;
-		vector<Vector> mouse_points;
+        vector<Entity *> entities;
+        vector<Vector> mouse_points;
 
 };
 

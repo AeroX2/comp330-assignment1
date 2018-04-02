@@ -11,12 +11,12 @@
 #include "entity.hpp"
 
 class House : public Entity {
-	public:
-		House(Vector position, Vector size, int peak);
+    public:
+        House(Vector position, Vector size, int peak);
 
-		void redraw();
-	private:
-		int peak;
+        void redraw();
+    private:
+        int peak;
 };
 
 #endif /* ENTITIES_HOUSE_HPP_ */

@@ -8,8 +8,8 @@
 #include "entity.hpp"
 
 Entity::Entity(Vector position, Vector size) : position(position), size(size) {
-	rotation = 0;
-	rotationVelocity = 0;
+    rotation = 0;
+    rotationVelocity = 0;
 }
 
 void Entity::update() {
@@ -19,18 +19,18 @@ void Entity::update() {
 //		futureVelocity.setZero()
 //	}
 
-	if (velocity.x > -0.01 && velocity.x < 0.01) velocity.x = 0;
-	if (velocity.y > -0.01 && velocity.y < 0.01) velocity.y = 0;
-	if (rotationVelocity > -0.01 && rotationVelocity < 0.01) rotationVelocity = 0;
+    if (velocity.x > -0.01 && velocity.x < 0.01) velocity.x = 0;
+    if (velocity.y > -0.01 && velocity.y < 0.01) velocity.y = 0;
+    if (rotationVelocity > -0.01 && rotationVelocity < 0.01) rotationVelocity = 0;
 
 //	rotationVelocity += angleAcceleration
-	rotation += rotationVelocity;
+    rotation += rotationVelocity;
 
-	position += velocity;
+    position += velocity;
     velocity += acceleration;
 }
 
 void Entity::redraw() {
-	glTranslatef(position.x, position.y, 0);
+    glTranslatef(position.x, position.y, 0);
     glRotatef(rotation, 0, 0, 1);
 }

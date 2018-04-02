@@ -15,9 +15,9 @@
 #include "entity.hpp"
 
 class Lake : public Entity {
-	public:
-		Lake(Vector position, Vector size);
-		void redraw();
+    public:
+        Lake(Vector position, Vector size);
+        void redraw();
         bool check_collision(Entity entity);
 };
 

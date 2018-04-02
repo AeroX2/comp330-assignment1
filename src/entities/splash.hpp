@@ -15,10 +15,10 @@
 #include "entity.hpp"
 
 class Splash : public Entity {
-	public:
-		Splash(Vector position, Vector size);
+    public:
+        Splash(Vector position, Vector size);
         void update();
-		void redraw();
+        void redraw();
     private:
         int time_elapsed;
         float opacity;

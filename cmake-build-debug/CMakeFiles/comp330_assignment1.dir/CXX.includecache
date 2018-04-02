@@ -1,0 +1,144 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/constants.hpp
+
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/entity.cpp
+entity.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/entity.hpp
+
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/entity.hpp
+GL/freeglut.h
+-
+vector.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/vector.hpp
+
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/fire.cpp
+fire.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/fire.hpp
+
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/fire.hpp
+vector
+-
+../constants.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/constants.hpp
+../utils.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/utils.hpp
+entity.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/entity.hpp
+
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/helicopter.cpp
+helicopter.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/helicopter.hpp
+
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/helicopter.hpp
+../constants.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/constants.hpp
+entity.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/entity.hpp
+
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/house.cpp
+house.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/house.hpp
+
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/house.hpp
+entity.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/entity.hpp
+
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/lake.cpp
+lake.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/lake.hpp
+
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/lake.hpp
+vector
+-
+../constants.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/constants.hpp
+../utils.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/utils.hpp
+entity.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/entity.hpp
+
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/splash.cpp
+splash.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/splash.hpp
+
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/splash.hpp
+vector
+-
+../constants.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/constants.hpp
+../utils.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/utils.hpp
+entity.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/entity.hpp
+
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/vector.cpp
+vector.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/vector.hpp
+../constants.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/constants.hpp
+
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/vector.hpp
+iostream
+-
+cmath
+-
+
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/main.cpp
+GL/freeglut.h
+-
+constants.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/constants.hpp
+world.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/world.hpp
+
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/utils.cpp
+utils.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/utils.hpp
+
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/utils.hpp
+GL/glut.h
+-
+cmath
+-
+random
+-
+constants.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/constants.hpp
+
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/world.cpp
+world.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/world.hpp
+entities/splash.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/splash.hpp
+
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/world.hpp
+GL/freeglut.h
+-
+stdio.h
+-
+vector
+-
+queue
+-
+constants.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/constants.hpp
+entities/vector.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/vector.hpp
+entities/entity.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/entity.hpp
+entities/helicopter.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/helicopter.hpp
+entities/house.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/house.hpp
+entities/fire.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/fire.hpp
+entities/lake.hpp
+D:/Users/James Ridey/Documents/git/comp330-assignment1/src/entities/lake.hpp
+

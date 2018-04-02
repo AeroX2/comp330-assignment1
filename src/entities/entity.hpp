@@ -12,25 +12,25 @@
 #include "vector.hpp"
 
 class Entity {
-	public:
-		explicit Entity(Vector position, Vector size);
+    public:
+        explicit Entity(Vector position, Vector size);
 
-		virtual void update();
-		virtual void redraw();
+        virtual void update();
+        virtual void redraw();
 
-		//Position vector
-		Vector position;
-		//Velocity vector
-		Vector velocity;
+        //Position vector
+        Vector position;
+        //Velocity vector
+        Vector velocity;
         //Acceleration vector
         Vector acceleration;
-		//Size vector
-		Vector size;
+        //Size vector
+        Vector size;
 
-		//Rotation angle in degrees
-		float rotation;
-		//Rotation velocity
-		float rotationVelocity;
+        //Rotation angle in degrees
+        float rotation;
+        //Rotation velocity
+        float rotationVelocity;
 };
 
 #endif /* ENTITIES_ENTITY_HPP_ */

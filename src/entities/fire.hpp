@@ -15,16 +15,16 @@
 #include "entity.hpp"
 
 class Fire : public Entity {
-	public:
-		Fire(Vector position, Vector size);
-		void update();
-		void redraw();
-		void new_fire();
-	private:
-		//3 separate layers of "random" circles for the fire
-		vector<int> layers[3];
+    public:
+        Fire(Vector position, Vector size);
+        void update();
+        void redraw();
+        void new_fire();
+    private:
+        //3 separate layers of "random" circles for the fire
+        vector<int> layers[3];
 
-		int ticks;
+        int ticks;
 };
 
 #endif /* ENTITIES_FIRE_HPP_ */

@@ -16,15 +16,15 @@ void Splash::update() {
     Entity::update();
 
     int current_time = glutGet(GLUT_ELAPSED_TIME);
-    if ((current_time-time_elapsed) >= 800) {
+    if ((current_time - time_elapsed) >= 800) {
         size *= 0.99;
         opacity *= 0.99;
     }
 }
 
 void Splash::redraw() {
-	Entity::redraw();
+    Entity::redraw();
 
-	glColor4ub(0,0,125,opacity);
+    glColor4ub(0, 0, 125, opacity);
     Utils::draw_circle(size.x);
 }

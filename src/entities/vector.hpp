@@ -7,34 +7,34 @@
 using namespace std;
 
 class Vector {
-	public:
+    public:
         explicit Vector(float x = 0, float y = 0);
 
-		Vector operator+(const Vector& rhs);
-		Vector operator-(const Vector& rhs);
-		Vector operator*(const Vector& rhs);
-		Vector operator*(float rhs);
+        Vector operator+(const Vector &rhs);
+        Vector operator-(const Vector &rhs);
+        Vector operator*(const Vector &rhs);
+        Vector operator*(float rhs);
 
-		Vector& operator+=(const Vector& rhs);
-		Vector& operator-=(const Vector& rhs);
-		Vector& operator*=(const Vector& rhs);
-		Vector& operator*=(float rhs);
+        Vector &operator+=(const Vector &rhs);
+        Vector &operator-=(const Vector &rhs);
+        Vector &operator*=(const Vector &rhs);
+        Vector &operator*=(float rhs);
 
-        Vector& operator/=(float rhs);
+        Vector &operator/=(float rhs);
 
-		float distance();
-		float fake_distance();
-		Vector normalise();
-		void print();
+        float distance();
+        float fake_distance();
+        Vector normalise();
+        void print();
 
-		float x;
-		float y;
+        float x;
+        float y;
 
-    float angle();
+        float angle();
 
-    Vector truncate(float max);
+        Vector truncate(float max);
 
-    Vector limit(const float d);
+        Vector limit(const float d);
 };
 
 #endif

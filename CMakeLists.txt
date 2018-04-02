@@ -17,8 +17,8 @@ add_executable(comp330_assignment1
         src/entities/house.hpp
         src/entities/lake.cpp
         src/entities/lake.hpp
-        src/entities/sesbase.cpp
-        src/entities/sesbase.hpp
+        src/entities/splash.cpp
+        src/entities/splash.hpp
         src/entities/vector.cpp
         src/entities/vector.hpp
         src/constants.hpp

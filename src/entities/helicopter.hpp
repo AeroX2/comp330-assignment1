@@ -12,23 +12,23 @@
 #include "entity.hpp"
 
 class Helicopter : public Entity {
-	public:
-		Helicopter();
-		void update();
-		void redraw();
-		void set_target(Vector target);
+    public:
+        Helicopter();
+        void update();
+        void redraw();
+        void set_target(Vector target);
         void set_stop(bool stop);
 
-	void set_filling(bool i);
+        void set_filling(bool i);
 
-    float &get_water();
+        float &get_water();
 
-private:
+    private:
         bool stop;
-    	bool filling;
+        bool filling;
 
-		float water;
-		float bladeAngle;
+        float water;
+        float bladeAngle;
 
         Vector target;
 };
