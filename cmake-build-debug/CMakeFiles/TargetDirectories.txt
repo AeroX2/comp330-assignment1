@@ -1,3 +1,0 @@
-D:/Users/James Ridey/Documents/git/comp330-assignment1/cmake-build-debug/CMakeFiles/comp330_assignment1.dir
-D:/Users/James Ridey/Documents/git/comp330-assignment1/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/Users/James Ridey/Documents/git/comp330-assignment1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
