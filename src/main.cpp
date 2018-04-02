@@ -13,6 +13,8 @@ int WINDOW_WIDTH = INITIAL_WINDOW_WIDTH;
 int WINDOW_HEIGHT = INITIAL_WINDOW_HEIGHT;
 
 World world;
+
+int menu_id;
 double current_time = 0;
 double accumulator = 0;
 bool running = true;
@@ -120,6 +122,24 @@ void reshape(int width, int height) {
     WINDOW_HEIGHT = height;
 }
 
+ void processMenuEvents(int option) {
+    switch (option) {
+        case MENU_EXIT:
+            exit(0);
+        default:
+            break;
+    }
+    glutPostRedisplay();
+}
+
+//Create the right click menu
+void createMenu() {
+    menu_id = glutCreateMenu(processMenuEvents);
+    glutAddMenuEntry("Exit",MENU_EXIT);
+
+    glutAttachMenu(GLUT_RIGHT_BUTTON);
+}
+
 int main(int argc, char *argv[]) {
     debug("Starting up");
 
@@ -137,6 +157,8 @@ int main(int argc, char *argv[]) {
     glutMotionFunc(mouse_move);
     glutMouseFunc(mouse_click);
     glutReshapeFunc(reshape);
+
+    createMenu();
 
     debug("Starting gameloop");
     init();
