@@ -101,16 +101,25 @@ void key_up(unsigned char key, int x, int y) {
     }
 }
 
+/*
+ * Mouse motion callback, called whenever the mouse is down and moved
+ */
 void mouse_move(int x, int y) {
     world.mouse_point(x, WINDOW_HEIGHT - y);
 }
 
+/*
+ * Mouse click callback function, called when the mouse is clicked
+ */
 void mouse_click(int button, int state, int x, int y) {
     if (state == GLUT_UP && button == GLUT_LEFT_BUTTON) {
         world.mouse_click(x, y);
     }
 }
 
+/*
+ * Reshape callback function, called when the window size is changed
+ */
 void reshape(int width, int height) {
     //TODO A reminder that this is not currently working
     int x = (width - INITIAL_WINDOW_WIDTH) / 2;
@@ -122,6 +131,9 @@ void reshape(int width, int height) {
     WINDOW_HEIGHT = height;
 }
 
+/*
+ * Process the right click menu events
+ */
  void processMenuEvents(int option) {
     switch (option) {
         case MENU_EXIT:
@@ -132,10 +144,12 @@ void reshape(int width, int height) {
     glutPostRedisplay();
 }
 
-//Create the right click menu
+/*
+ * Create the right click menu
+ */
 void createMenu() {
     menu_id = glutCreateMenu(processMenuEvents);
-    glutAddMenuEntry("Exit",MENU_EXIT);
+    glutAddMenuEntry("Exit (q)",MENU_EXIT);
 
     glutAttachMenu(GLUT_RIGHT_BUTTON);
 }
