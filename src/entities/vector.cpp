@@ -59,14 +59,23 @@ Vector &Vector::operator/=(const float rhs) {
     return *this;
 }
 
+/*
+ * Return the distance of the vector
+ */
 float Vector::distance() {
     return sqrt(x * x + y * y);
 }
 
+/*
+ * Return the distance squared of the vector
+ */
 float Vector::fake_distance() {
     return x * x + y * y;
 }
 
+/*
+ * Normalize the length of the vector between 0 and 1
+ */
 Vector Vector::normalise() {
     float length = distance();
     Vector new_vector = Vector(x, y);
@@ -77,11 +86,18 @@ Vector Vector::normalise() {
     return new_vector;
 }
 
+/*
+ * Calculate the angle of the vector
+ */
 float Vector::angle() {
     if (y == 0 && x == 0) return 0;
     return atan2(y, x) * 180 / M_PI;
 }
 
+/*
+ * If the length of the vector is larger than d,
+ * limit the vector length to d
+ */
 Vector Vector::limit(const float d) {
     if (fake_distance() > d * d) {
         *this = normalise() * d;
@@ -89,6 +105,9 @@ Vector Vector::limit(const float d) {
     return *this;
 }
 
+/*
+ * Print out the vector to stdout
+ */
 void Vector::print() {
     cout << "X: " << x << '\n';
     cout << "Y: " << y << '\n';

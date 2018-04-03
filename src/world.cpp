@@ -109,18 +109,29 @@ void World::redraw() {
     }
 }
 
+/*
+ * Function binded to motionFunc,
+ * called when the mouse is down and moved
+ */
 void World::mouse_point(int x, int y) {
     Vector current_point = Vector(x, y);
+
+    //If there are no points, tell the helicopter to
+    //fly towards that point
     if (mouse_points.empty()) {
         helicopter.set_stop(false);
         helicopter.set_target(current_point);
     }
 
+    //Make another point if the mouse is far enough away from the previous point
     if (mouse_points.empty() || (current_point - mouse_points.back()).fake_distance() > MOUSE_POINT_DISTANCE) {
         mouse_points.push_back(current_point);
     }
 }
 
+/*
+ * Function executed when the mouse is clicked
+ */
 void World::mouse_click(int x, int y) {
     int currentTime = glutGet(GLUT_ELAPSED_TIME);
     if ((currentTime - previousClickTime) <= DOUBLE_CLICK_TIME) {

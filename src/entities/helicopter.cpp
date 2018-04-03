@@ -71,13 +71,17 @@ void Helicopter::redraw() {
     glPushMatrix();
 }
 
-//Set the target to fly towards
+/*
+ * Set the target to fly towards
+ */
 void Helicopter::set_target(Vector target) {
     this->target = target;
 }
 
-//If there is no target left, stop should be true
-//Otherwise this should be set to true
+/*
+ * If there is no target left, stop should be true
+ * Otherwise this should be set to true
+ */
 void Helicopter::set_stop(bool stop) {
     this->stop = stop;
 }

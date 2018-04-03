@@ -33,7 +33,6 @@ void House::redraw() {
     glEnd();
 
     //House roof lines
-    int d = (int) (size.x - peak) / 2;
     glLineWidth(1);
     glBegin(GL_LINE_LOOP);
         glVertex2d(x0, y0);

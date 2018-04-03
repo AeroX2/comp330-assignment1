@@ -22,8 +22,6 @@ class Entity {
         Vector position;
         //Velocity vector
         Vector velocity;
-        //Acceleration vector
-        Vector acceleration;
         //Size vector
         Vector size;
 

@@ -12,24 +12,25 @@ Entity::Entity(Vector position, Vector size) : position(position), size(size) {
     rotationVelocity = 0;
 }
 
+/*
+ * Super update method
+ * Clear velocities if they are close to zero
+ * and update position, rotation
+ */
 void Entity::update() {
-
-//	if (!futureVelocity.isZero) {
-//		velocity.set(futureVelocity)
-//		futureVelocity.setZero()
-//	}
-
     if (velocity.x > -0.01 && velocity.x < 0.01) velocity.x = 0;
     if (velocity.y > -0.01 && velocity.y < 0.01) velocity.y = 0;
     if (rotationVelocity > -0.01 && rotationVelocity < 0.01) rotationVelocity = 0;
 
-//	rotationVelocity += angleAcceleration
     rotation += rotationVelocity;
-
     position += velocity;
-    velocity += acceleration;
 }
 
+/*
+ * Super redraw method
+ * Draws the entity at a specified position
+ * and rotates it
+ */
 void Entity::redraw() {
     glTranslatef(position.x, position.y, 0);
     glRotatef(rotation, 0, 0, 1);

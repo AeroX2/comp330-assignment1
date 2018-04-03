@@ -16,7 +16,7 @@ void Splash::update() {
     Entity::update();
 
     int current_time = glutGet(GLUT_ELAPSED_TIME);
-    if ((current_time - time_elapsed) >= 800) {
+    if ((current_time - time_elapsed) >= SPLASH_PERSISTENCE_TIME) {
         size *= 0.99;
         opacity *= 0.99;
     }
