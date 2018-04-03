@@ -15,6 +15,7 @@ unsigned char layer_colors[][3] = {{255, 0,   0},
                                    {255, 255, 255}};
 
 Fire::Fire(Vector position, Vector size) : Entity(position, size) {
+    debug("Creating fire object");
     ticks = 0;
     new_fire();
 }

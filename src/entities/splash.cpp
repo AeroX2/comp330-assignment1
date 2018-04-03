@@ -8,6 +8,7 @@
 #include "splash.hpp"
 
 Splash::Splash(Vector position, Vector size) : Entity(position, size) {
+    debug("Creating splash object");
     opacity = 100;
     time_elapsed = glutGet(GLUT_ELAPSED_TIME);
 }

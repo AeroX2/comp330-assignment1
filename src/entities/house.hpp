@@ -9,6 +9,7 @@
 #define ENTITIES_HOUSE_HPP_
 
 #include "entity.hpp"
+#include "../constants.hpp"
 
 class House : public Entity {
     public:

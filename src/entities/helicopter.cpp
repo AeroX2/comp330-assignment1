@@ -8,6 +8,8 @@
 #include "helicopter.hpp"
 
 Helicopter::Helicopter() : Entity(Vector(INITIAL_WINDOW_WIDTH / 2, INITIAL_WINDOW_HEIGHT / 2), Vector(25, 25)) {
+    debug("Creating helicopter object");
+
     filling = false;
     stop = true;
 
@@ -35,6 +37,7 @@ void Helicopter::update() {
         velocity *= 0.95f;
     }
 
+    //Fill up with water until the max
     if (filling && water <= HELICOPTER_MAX_WATER) {
         water += HELICOPTER_WATER_FILL_RATE;
     }
@@ -86,11 +89,16 @@ void Helicopter::set_stop(bool stop) {
     this->stop = stop;
 }
 
-//
+/*
+ * Set if the helicopter is filling up with water or not
+ */
 void Helicopter::set_filling(bool filling) {
     this->filling = filling;
 }
 
+/*
+ * Get the amount of water the helicopter is holding
+ */
 float &Helicopter::get_water() {
     return water;
 }

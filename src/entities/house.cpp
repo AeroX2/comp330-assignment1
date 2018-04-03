@@ -9,6 +9,7 @@
 
 House::House(Vector position, Vector size, int peak) :
         Entity(position, size), peak(peak) {
+    debug("Creating house object");
 }
 
 void House::redraw() {
@@ -24,7 +25,7 @@ void House::redraw() {
 
     //Rectangle outline
     glColor3ub(0, 0, 0);
-    glLineWidth(5);
+    glLineWidth(2);
     glBegin(GL_LINE_LOOP);
         glVertex2d(x0, y0);
         glVertex2d(x1, y0);
@@ -33,7 +34,7 @@ void House::redraw() {
     glEnd();
 
     //House roof lines
-    glLineWidth(1);
+    glLineWidth(3);
     glBegin(GL_LINE_LOOP);
         glVertex2d(x0, y0);
         glVertex2d(-peak / 2, 0);

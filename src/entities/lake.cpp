@@ -21,6 +21,7 @@ int coords[][2] = {
 };
 
 Lake::Lake(Vector position, Vector size) : Entity(position, size) {
+    debug("Creating lake object");
 }
 
 void Lake::redraw() {
