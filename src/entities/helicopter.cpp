@@ -6,6 +6,7 @@
  */
 
 #include "helicopter.hpp"
+#include "../utils.hpp"
 
 Helicopter::Helicopter() : Entity(Vector(INITIAL_WINDOW_WIDTH / 2, INITIAL_WINDOW_HEIGHT / 2), Vector(25, 25)) {
     debug("Creating helicopter object");
@@ -40,6 +41,8 @@ void Helicopter::update() {
     //Fill up with water until the max
     if (filling && water <= HELICOPTER_MAX_WATER) {
         water += HELICOPTER_WATER_FILL_RATE;
+    } else {
+        filling = false;
     }
 }
 
@@ -60,6 +63,15 @@ void Helicopter::redraw() {
         glRecti(-3, -40, 3, 40);
         glRecti(-40, -3, 40, 3);
     glPopMatrix();
+
+    //Draw the filling indicator
+    if (filling) {
+        glPushMatrix();
+        glRotatef(-bladeAngle * 1.5, 0, 0, 1);
+        glColor3ub(0, 0, 255);
+        Utils::draw_arc(size.x / 2, 0, 270);
+        glPopMatrix();
+    }
 
     //This is deliberate, we are popping out of the
     //entity matrix and drawing on the screen instead

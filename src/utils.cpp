@@ -48,14 +48,23 @@ float Utils::constrain(float num, float min, float max) {
 }
 
 /*
- * Draw a circle with a radius at the origin
+ * Draw a arc with radius at the origin, starting at start_degree, ending at end_degree
  * Should be positioned with glTranslatef
  */
-void Utils::draw_circle(float radius) {
+void Utils::draw_arc(float radius, int start_degree, int end_degree) {
     glBegin(GL_TRIANGLE_FAN);
-        for (int i = 0; i < 360; i++) {
+        if (!(start_degree == 0 && end_degree == 360)) glVertex2f(0,0);
+        for (int i = start_degree; i < end_degree; i++) {
             float degInRad = i * M_PI / 180;
             glVertex2f(cos(degInRad) * radius, sin(degInRad) * radius);
         }
     glEnd();
+}
+
+/*
+ * Draw a circle with a radius at the origin
+ * Should be positioned with glTranslatef
+ */
+void Utils::draw_circle(float radius) {
+    Utils::draw_arc(radius, 0, 360);
 }

@@ -19,6 +19,8 @@ class Utils {
         static float random_normalised();
         static float random_clamped();
         static float constrain(float num, float min, float max);
+
+        static void draw_arc(float radius, int start_degree, int end_degree);
         static void draw_circle(float radius);
 };
 
