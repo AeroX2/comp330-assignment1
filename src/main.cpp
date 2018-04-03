@@ -120,15 +120,22 @@ void mouse_click(int button, int state, int x, int y) {
 /*
  * Reshape callback function, called when the window size is changed
  */
-void reshape(int width, int height) {
-    //TODO A reminder that this is not currently working
-    int x = (width - INITIAL_WINDOW_WIDTH) / 2;
-    int y = (height - INITIAL_WINDOW_HEIGHT) / 2;
-    gluOrtho2D(x, y, INITIAL_WINDOW_WIDTH, INITIAL_WINDOW_HEIGHT);
-    glViewport(0, 0, width, height);
+void reshape(int w, int h) {
+    //New viewport to width and height of window
+    glViewport(0, 0, w, h);
+    glMatrixMode(GL_PROJECTION);
+        glLoadIdentity();
+        gluOrtho2D(0, w, 0, h);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
 
-    WINDOW_WIDTH = width;
-    WINDOW_HEIGHT = height;
+    //Translate everything to the middle of the screen
+    int x = (w - INITIAL_WINDOW_WIDTH) / 2;
+    int y = (h - INITIAL_WINDOW_HEIGHT) / 2;
+    glTranslated(x,y,0);
+
+    WINDOW_WIDTH = w;
+    WINDOW_HEIGHT = h;
 }
 
 /*

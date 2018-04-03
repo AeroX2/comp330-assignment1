@@ -12,9 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b024a8d0-998f-44c1-bc8f-654bd0e045c1" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/src/constants.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/helicopter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/helicopter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,101 +27,22 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="vector.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/entities/vector.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="113" selection-start-line="113" selection-end-line="113" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="house.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/entities/house.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="helicopter.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/entities/helicopter.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-255" />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="house.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/entities/house.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#147#168#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="utils.cpp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/utils.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="39" selection-start-line="39" selection-end-line="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="utils.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="helicopter.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/entities/helicopter.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="863">
-              <caret line="71" column="40" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="40" />
-              <folding>
-                <element signature="e#97#122#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="splash.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/entities/splash.cpp">
+      <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
-              <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
+              <caret line="137" column="8" selection-start-line="137" selection-start-column="8" selection-end-line="137" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="constants.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/constants.hpp">
+      <file leaf-file-name="helicopter.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/entities/helicopter.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-38">
-              <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="splash.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/entities/splash.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="274">
+              <caret line="79" column="7" selection-start-line="79" selection-start-column="7" selection-end-line="79" selection-end-column="7" />
               <folding>
-                <element signature="e#150#167#0" expanded="true" />
+                <element signature="e#97#122#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -147,16 +68,16 @@
         <option value="$PROJECT_DIR$/src/entities/entity.hpp" />
         <option value="$PROJECT_DIR$/src/entities/entity.cpp" />
         <option value="$PROJECT_DIR$/src/entities/vector.cpp" />
-        <option value="$PROJECT_DIR$/src/main.cpp" />
         <option value="$PROJECT_DIR$/src/entities/splash.cpp" />
         <option value="$PROJECT_DIR$/src/entities/fire.cpp" />
         <option value="$PROJECT_DIR$/src/entities/lake.cpp" />
         <option value="$PROJECT_DIR$/src/entities/house.hpp" />
-        <option value="$PROJECT_DIR$/src/constants.hpp" />
         <option value="$PROJECT_DIR$/src/entities/house.cpp" />
         <option value="$PROJECT_DIR$/src/utils.hpp" />
-        <option value="$PROJECT_DIR$/src/entities/helicopter.cpp" />
         <option value="$PROJECT_DIR$/src/utils.cpp" />
+        <option value="$PROJECT_DIR$/src/constants.hpp" />
+        <option value="$PROJECT_DIR$/src/main.cpp" />
+        <option value="$PROJECT_DIR$/src/entities/helicopter.cpp" />
       </list>
     </option>
   </component>
@@ -238,12 +159,12 @@
       <option name="presentableId" value="Default" />
       <updated>1522668002672</updated>
       <workItem from="1522668005748" duration="853000" />
-      <workItem from="1522728881896" duration="4821000" />
+      <workItem from="1522728881896" duration="6271000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5674000" />
+    <option name="totallyTimeSpent" value="7124000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -251,12 +172,12 @@
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15559895" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32965517" />
+      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.49609375" weight="0.32965517" />
       <window_info anchor="bottom" id="CMake" order="7" weight="0.34004474" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5045573" side_tool="true" visible="true" weight="0.32965517" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32965517" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49544272" visible="true" weight="0.32965517" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -367,13 +288,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="146" column="2" selection-start-line="146" selection-start-column="2" selection-end-line="146" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/entities/lake.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -420,7 +334,7 @@
     <entry file="file://$PROJECT_DIR$/src/entities/house.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="e#147#168#0" expanded="true" />
           </folding>
@@ -437,27 +351,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/constants.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-38">
-          <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/entities/splash.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/entities/helicopter.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="863">
-          <caret line="71" column="40" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="40" />
-          <folding>
-            <element signature="e#97#122#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -472,6 +369,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constants.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="137" column="8" selection-start-line="137" selection-start-column="8" selection-end-line="137" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entities/helicopter.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="79" column="7" selection-start-line="79" selection-start-column="7" selection-end-line="79" selection-end-column="7" />
+          <folding>
+            <element signature="e#97#122#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

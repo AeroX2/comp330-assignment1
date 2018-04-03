@@ -79,9 +79,12 @@ void World::redraw() {
     snprintf(tempString, 50, "FPS: %d", fps);
 
     //And draw it
-    glColor3f(1, 1, 1);
-    glRasterPos2i(10, WINDOW_HEIGHT - 30);
-    glutBitmapString(GLUT_BITMAP_HELVETICA_18, reinterpret_cast<unsigned char *>(tempString));
+    glPushMatrix();
+        glLoadIdentity();
+        glColor3f(1, 1, 1);
+        glRasterPos2i(10, WINDOW_HEIGHT - 30);
+        glutBitmapString(GLUT_BITMAP_HELVETICA_18, reinterpret_cast<unsigned char *>(tempString));
+    glPopMatrix();
 
     //Draw every entity
     for (Entity *entity : entities) {

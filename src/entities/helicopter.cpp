@@ -76,13 +76,17 @@ void Helicopter::redraw() {
     //This is deliberate, we are popping out of the
     //entity matrix and drawing on the screen instead
     glPopMatrix();
-        //Draw water meter
-        glColor3ub(0, 0, 0);
-        glRasterPos2i(65, 10);
-        glutBitmapString(GLUT_BITMAP_HELVETICA_12, reinterpret_cast<const unsigned char *>("Water meter"));
+        glPushMatrix();
+            glLoadIdentity();
 
-        glColor3ub(0, 0, 255);
-        glRectf(10, 10, 60, 15 + 300 * (water / HELICOPTER_MAX_WATER));
+            //Draw water meter
+            glColor3ub(0, 0, 0);
+            glRasterPos2i(65, 10);
+            glutBitmapString(GLUT_BITMAP_HELVETICA_12, reinterpret_cast<const unsigned char *>("Water meter"));
+
+            glColor3ub(0, 0, 255);
+            glRectf(10, 10, 60, 15 + 300 * (water / HELICOPTER_MAX_WATER));
+        glPopMatrix();
     glPushMatrix();
 }
 
