@@ -16,14 +16,15 @@ class Helicopter : public Entity {
         Helicopter();
         void update();
         void redraw();
+
+        void set_start_target(Vector target);
         void set_target(Vector target);
         void set_stop(bool stop);
 
         void set_filling(bool i);
-
         float &get_water();
 
-    private:
+private:
         bool stop;
         bool filling;
 
@@ -31,6 +32,7 @@ class Helicopter : public Entity {
         float bladeAngle;
 
         Vector target;
+
 };
 
 #endif /* ENTITIES_HELICOPTER_HPP_ */

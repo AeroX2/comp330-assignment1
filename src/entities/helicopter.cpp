@@ -30,9 +30,9 @@ void Helicopter::update() {
         //Steer towards the current point
         //Based of the code found on: https://www.askforgametask.com/tutorial/steering-behaviors-seek/
         Vector desired_velocity = (target - position).normalise() * HELICOPTER_MAX_SPEED;
-        Vector steering = (desired_velocity - velocity).limit(HELICOPTER_MAX_FORCE);
+        Vector steering = (desired_velocity - velocity) .limit(HELICOPTER_MAX_FORCE);
         velocity = (velocity + steering).limit(HELICOPTER_MAX_SPEED);
-        rotation = velocity.angle() - 90;
+        rotation = velocity.angle();
     } else {
         //Slow down helicopter after last point
         velocity *= 0.95f;
@@ -52,6 +52,7 @@ void Helicopter::redraw() {
     //Set the color white
     glColor4ub(255, 255, 255, 250);
 
+    glRotatef(-90,0,0,1);
     //Draw the helicopter body
     glRectf(-size.x / 2, -size.y / 2, size.x / 2, size.y / 2);
     //And tail
@@ -95,6 +96,14 @@ void Helicopter::redraw() {
  */
 void Helicopter::set_target(Vector target) {
     this->target = target;
+}
+
+/*
+ * Called the first time a target is set
+ */
+void Helicopter::set_start_target(Vector target) {
+    this->target = target;
+    velocity += Vector(cos(rotation*M_PI/180), sin(rotation*M_PI/180)) * HELICOPTER_MAX_SPEED;
 }
 
 /*

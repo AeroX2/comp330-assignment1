@@ -123,7 +123,7 @@ void World::mouse_point(int x, int y) {
     //fly towards that point
     if (mouse_points.empty()) {
         helicopter.set_stop(false);
-        helicopter.set_target(current_point);
+        helicopter.set_start_target(current_point);
     }
 
     //Make another point if the mouse is far enough away from the previous point

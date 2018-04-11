@@ -21,14 +21,14 @@ const float FRAME_RATE = 1/60.0f;
 const long CLOCKS_PER_SEC = 1000000;
 const int DOUBLE_CLICK_TIME = 300;
 
-const int MOUSE_POINT_DISTANCE = 100;
+const int MOUSE_POINT_DISTANCE = 10;
 const int HELICOPTER_POINT_DISTANCE = 30;
 
 const float SPLASH_WATER_AMOUNT = 10.0f;
 const int SPLASH_PERSISTENCE_TIME = 16000;
 
-const float HELICOPTER_MAX_SPEED = 5.0f;
-const float HELICOPTER_MAX_FORCE = 0.3f;
+const float HELICOPTER_MAX_SPEED = 4.0f;
+const float HELICOPTER_MAX_FORCE = 0.2f;
 const float HELICOPTER_MAX_WATER = 50.0f;
 const float HELICOPTER_BLADE_SPIN_RATE = 10.0f;
 const float HELICOPTER_WATER_FILL_RATE = 0.1f;
