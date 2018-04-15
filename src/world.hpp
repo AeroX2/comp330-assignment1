@@ -32,6 +32,7 @@ class World {
         void mouse_point(int x, int y);
         void mouse_click(int x, int y);
 
+        void reset();
     private:
         int fps;
         int frameCounter;

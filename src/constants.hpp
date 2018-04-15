@@ -35,6 +35,7 @@ const float HELICOPTER_WATER_FILL_RATE = 0.1f;
 const int FIRE_TICK_OVER = 2;
 
 #define MENU_EXIT 0
+#define MENU_RESET 1
 
 #define HOUSE1_PARAMETERS Vector(450,260),Vector(70,50),55
 #define HOUSE2_PARAMETERS Vector(450,470),Vector(100,80),74

@@ -39,6 +39,11 @@ void World::init() {
     entities.push_back(&helicopter);
 }
 
+void World::reset() {
+    helicopter = Helicopter();
+    mouse_points.clear();
+}
+
 void World::update() {
     //Update every entity
     for (Entity *entity : entities) {
@@ -153,4 +158,5 @@ void World::mouse_click(int x, int y) {
         previousClickTime = currentTime;
     }
 }
+
 
