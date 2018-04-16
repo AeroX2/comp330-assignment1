@@ -18,7 +18,7 @@ World::World() :
         lake(LAKE_PARAMETERS) {
 
     fps = 0;
-	looping = false;
+    looping = false;
     frameCounter = 0;
     previousFPSTime = 0;
     previousClickTime = 0;
@@ -35,16 +35,22 @@ void World::init() {
     //entities.push_back(&fire2);
     //entities.push_back(&fire3);
 
-	for (int i = 0; i <= 360; i += 20) {
-		float deg = i * PI / 180;
-		float x = INITIAL_WINDOW_WIDTH/2 + cos(deg)*FIRE_DISTANCE_FROM_ORIGIN;
-		float y = INITIAL_WINDOW_HEIGHT/2 + sin(deg)*FIRE_DISTANCE_FROM_ORIGIN;
-		Fire* fire = new Fire(Vector(x,y),Vector(0,0)); 
-		entities.push_back(fire);
-	}
+    for (int i = 0; i <= 360; i += 20) {
+        float deg = i * PI / 180;
+        float x = INITIAL_WINDOW_WIDTH/2 + cos(deg)*FIRE_DISTANCE_FROM_ORIGIN;
+        float y = INITIAL_WINDOW_HEIGHT/2 + sin(deg)*FIRE_DISTANCE_FROM_ORIGIN;
+        Fire* fire = new Fire(Vector(x,y),Vector(0,0)); 
+        entities.push_back(fire);
+    }
 
     entities.push_back(&lake);
+
     entities.push_back(&helicopter);
+}
+
+void World::reset() {
+    helicopter = Helicopter();
+    mouse_points.clear();
 }
 
 void World::update() {
@@ -66,7 +72,7 @@ void World::update() {
     if ((!mouse_points.empty()) &&
         (helicopter.position - mouse_points.front()).distance() <= HELICOPTER_POINT_DISTANCE) {
 
-		if (looping) mouse_points.push_back(mouse_points.front());
+        if (looping) mouse_points.push_back(mouse_points.front());
 
         mouse_points.erase(mouse_points.begin());
         if (!mouse_points.empty()) {
@@ -118,10 +124,10 @@ void World::redraw() {
                 for (Vector point : mouse_points) {
                     glVertex2d(point.x, point.y);
                 }
-				if (looping) {
-					Vector start_point = mouse_points.front();
-					glVertex2d(start_point.x, start_point.y);
-				}
+                if (looping) {
+                    Vector start_point = mouse_points.front();
+                    glVertex2d(start_point.x, start_point.y);
+                }
             glEnd();
         glPopMatrix();
     }
@@ -169,6 +175,3 @@ void World::mouse_click(int x, int y) {
     }
 }
 
-void World::toggle_looping() {
-	looping = !looping;
-}

@@ -96,6 +96,26 @@ void gameloop() {
 }
 
 /*
+ * Process the right click menu events and the key presses
+ */
+ void processMenuEvents(int option) {
+    switch (option) {
+        case MENU_EXIT:
+            running = false;
+            break;
+        case MENU_RESET:
+            world.reset();
+            break;
+        case MENU_TOGGLE_LOOPING:
+            world.toggle_looping();
+            break;
+        default:
+            break;
+    }
+    glutPostRedisplay();
+}
+
+/*
  * Keyboard callback function, called when a key is pressed
  */
 void key_down(unsigned char key, int x, int y) {
@@ -106,18 +126,23 @@ void key_down(unsigned char key, int x, int y) {
  */
 void key_up(unsigned char key, int x, int y) {
     if (key == 'q') {
-        debug("Exiting");
-        running = false;
+        processMenuEvents(MENU_EXIT);
+    } else if (key == 'r') {
+        processMenuEvents(MENU_RESET);
     } else if (key == 'l') {
-		debug("Looping");
-		world.toggle_looping();
-	}
+        world.toggle_looping();
+    }
 }
 
 /*
  * Mouse motion callback, called whenever the mouse is down and moved
  */
 void mouse_move(int x, int y) {
+
+    //If the window is resized the mouse coordinates will need to be offset
+    x -= (WINDOW_WIDTH - INITIAL_WINDOW_WIDTH) / 2;
+    y += (WINDOW_HEIGHT - INITIAL_WINDOW_HEIGHT) / 2;
+
     world.mouse_point(x, WINDOW_HEIGHT - y);
 }
 
@@ -152,26 +177,12 @@ void reshape(int w, int h) {
 }
 
 /*
- * Process the right click menu events
- */
- void processMenuEvents(int option) {
-    switch (option) {
-        case MENU_EXIT:
-            exit(0);
-        case MENU_TOGGLE_LOOPING:
-			world.toggle_looping();
-        default:
-            break;
-    }
-    glutPostRedisplay();
-}
-
-/*
  * Create the right click menu
  */
 void createMenu() {
     menu_id = glutCreateMenu(processMenuEvents);
     glutAddMenuEntry("Exit (q)",MENU_EXIT);
+    glutAddMenuEntry("Reset (r)",MENU_RESET);
     glutAddMenuEntry("Toggle looping (l)",MENU_TOGGLE_LOOPING);
 
     glutAttachMenu(GLUT_RIGHT_BUTTON);

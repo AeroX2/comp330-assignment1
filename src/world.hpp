@@ -32,7 +32,8 @@ class World {
         void mouse_point(int x, int y);
         void mouse_click(int x, int y);
 
-		void toggle_looping();
+	void toggle_looping();
+        void reset();
     private:
         int fps;
         int frameCounter;
@@ -40,7 +41,7 @@ class World {
         int previousClickTime;
 
         bool filling_mode;
-		bool looping;
+        bool looping;
 
         Helicopter helicopter;
         House house1;
