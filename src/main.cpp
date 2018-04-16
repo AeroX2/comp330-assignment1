@@ -9,9 +9,9 @@
 #include "constants.hpp"
 #include "world.hpp"
 
-#if defined(_WIN32) || defined(WIN32) 
+#if defined(_WIN32) || defined(WIN32)
 #else
-	#include <unistd.h>
+#include <unistd.h>
 #endif
 
 int WINDOW_WIDTH = INITIAL_WINDOW_WIDTH;
@@ -23,6 +23,7 @@ int menu_id;
 double current_time = 0;
 double accumulator = 0;
 bool running = true;
+bool ignore_mouse_move = false;
 
 /* Initialization function  */
 void init() {
@@ -88,17 +89,19 @@ void gameloop() {
         accumulator -= FRAME_RATE;
     }
 
-	#if defined(_WIN32) || defined(WIN32) 
-    	Sleep(1);
-	#else
-		usleep(1);
-	#endif
+#if defined(_WIN32) || defined(WIN32)
+    Sleep(1);
+#else
+    usleep(1);
+#endif
 }
 
 /*
  * Process the right click menu events and the key presses
  */
- void processMenuEvents(int option) {
+void processMenuEvents(int option) {
+    ignore_mouse_move = true;
+
     switch (option) {
         case MENU_EXIT:
             running = false;
@@ -108,6 +111,9 @@ void gameloop() {
             break;
         case MENU_TOGGLE_LOOPING:
             world.toggle_looping();
+            break;
+        case MENU_CLEAR_PATH:
+            world.clear_mouse_points();
             break;
         default:
             break;
@@ -130,7 +136,10 @@ void key_up(unsigned char key, int x, int y) {
     } else if (key == 'r') {
         processMenuEvents(MENU_RESET);
     } else if (key == 'l') {
-        world.toggle_looping();
+//        processMenuEvents(MENU_RESET);
+//        world.toggle_looping();
+    } else if (key == 'c') {
+        processMenuEvents(MENU_CLEAR_PATH);
     }
 }
 
@@ -138,6 +147,10 @@ void key_up(unsigned char key, int x, int y) {
  * Mouse motion callback, called whenever the mouse is down and moved
  */
 void mouse_move(int x, int y) {
+    if (ignore_mouse_move) {
+        ignore_mouse_move = false;
+        return;
+    }
 
     //If the window is resized the mouse coordinates will need to be offset
     x -= (WINDOW_WIDTH - INITIAL_WINDOW_WIDTH) / 2;
@@ -162,15 +175,15 @@ void reshape(int w, int h) {
     //New viewport to width and height of window
     glViewport(0, 0, w, h);
     glMatrixMode(GL_PROJECTION);
-        glLoadIdentity();
-        gluOrtho2D(0, w, 0, h);
+    glLoadIdentity();
+    gluOrtho2D(0, w, 0, h);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
     //Translate everything to the middle of the screen
     int x = (w - INITIAL_WINDOW_WIDTH) / 2;
     int y = (h - INITIAL_WINDOW_HEIGHT) / 2;
-    glTranslated(x,y,0);
+    glTranslated(x, y, 0);
 
     WINDOW_WIDTH = w;
     WINDOW_HEIGHT = h;
@@ -181,9 +194,10 @@ void reshape(int w, int h) {
  */
 void createMenu() {
     menu_id = glutCreateMenu(processMenuEvents);
-    glutAddMenuEntry("Exit (q)",MENU_EXIT);
-    glutAddMenuEntry("Reset (r)",MENU_RESET);
-    glutAddMenuEntry("Toggle looping (l)",MENU_TOGGLE_LOOPING);
+    glutAddMenuEntry("Exit (q)", MENU_EXIT);
+    glutAddMenuEntry("Reset (r)", MENU_RESET);
+//    glutAddMenuEntry("Toggle looping (l)",MENU_TOGGLE_LOOPING);
+    glutAddMenuEntry("Clear path (c)", MENU_CLEAR_PATH);
 
     glutAttachMenu(GLUT_RIGHT_BUTTON);
 }

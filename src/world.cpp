@@ -12,9 +12,6 @@ World::World() :
         house1(HOUSE1_PARAMETERS),
         house2(HOUSE2_PARAMETERS),
         house3(HOUSE3_PARAMETERS),
-        fire1(FIRE1_PARAMETERS),
-        fire2(FIRE2_PARAMETERS),
-        fire3(FIRE3_PARAMETERS),
         lake(LAKE_PARAMETERS) {
 
     fps = 0;
@@ -50,7 +47,7 @@ void World::init() {
 
 void World::reset() {
     helicopter = Helicopter();
-    mouse_points.clear();
+    clear_mouse_points();
 }
 
 void World::update() {
@@ -110,6 +107,16 @@ void World::redraw() {
         glPopMatrix();
     }
 
+    //Draw the water meter
+    glPushMatrix();
+        glColor3ub(0, 0, 0);
+        glRasterPos2i(65, 10);
+        glutBitmapString(GLUT_BITMAP_HELVETICA_12, reinterpret_cast<const unsigned char *>("Water meter"));
+
+        glColor3ub(0, 0, 255);
+        glRectf(10, 10, 60, 15 + 300 * (helicopter.get_water() / HELICOPTER_MAX_WATER));
+    glPopMatrix();
+
     //Draw the points, first point being a circle, the rest a line
     if (!mouse_points.empty()) {
         glColor3ub(255, 255, 255);
@@ -129,6 +136,17 @@ void World::redraw() {
                     glVertex2d(start_point.x, start_point.y);
                 }
             glEnd();
+
+            //Draw the helicopter outline at the end of the path
+            fake_helicopter.position = mouse_points.back();
+            fake_helicopter.rotation = helicopter.rotation;
+            if (mouse_points.size() >= 2) {
+                int size = mouse_points.size();
+                float rotation = (mouse_points[size-1] - mouse_points[size-2]).angle();
+                fake_helicopter.rotation = rotation;
+            }
+            fake_helicopter.draw_helicopter(true);
+
         glPopMatrix();
     }
 }
@@ -173,5 +191,14 @@ void World::mouse_click(int x, int y) {
     } else {
         previousClickTime = currentTime;
     }
+}
+
+void World::toggle_looping() {
+    looping = !looping;
+}
+
+void World::clear_mouse_points() {
+    mouse_points.clear();
+    helicopter.set_stop(true);
 }
 

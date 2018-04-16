@@ -46,11 +46,14 @@ void Helicopter::update() {
     }
 }
 
-void Helicopter::redraw() {
+void Helicopter::draw_helicopter(bool fake) {
     Entity::redraw();
 
     //Set the color white
     glColor4ub(255, 255, 255, 250);
+
+    //If this is a fake helicopter only draw the outline
+    if (fake) glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
     glRotatef(-90,0,0,1);
     //Draw the helicopter body
@@ -60,10 +63,16 @@ void Helicopter::redraw() {
 
     //Draw the helicopter blade
     glPushMatrix();
-        glRotatef(bladeAngle, 0, 0, 1);
-        glRecti(-3, -40, 3, 40);
-        glRecti(-40, -3, 40, 3);
+    glRotatef(fake ? 45 : bladeAngle, 0, 0, 1);
+    glRecti(-3, -40, 3, 40);
+    glRecti(-40, -3, 40, 3);
     glPopMatrix();
+
+    if (fake) glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+}
+
+void Helicopter::redraw() {
+    draw_helicopter(false);
 
     //Draw the filling indicator
     if (filling) {
@@ -73,22 +82,6 @@ void Helicopter::redraw() {
         Utils::draw_arc(size.x / 2, 0, 270);
         glPopMatrix();
     }
-
-    //This is deliberate, we are popping out of the
-    //entity matrix and drawing on the screen instead
-    glPopMatrix();
-        glPushMatrix();
-            glLoadIdentity();
-
-            //Draw water meter
-            glColor3ub(0, 0, 0);
-            glRasterPos2i(65, 10);
-            glutBitmapString(GLUT_BITMAP_HELVETICA_12, reinterpret_cast<const unsigned char *>("Water meter"));
-
-            glColor3ub(0, 0, 255);
-            glRectf(10, 10, 60, 15 + 300 * (water / HELICOPTER_MAX_WATER));
-        glPopMatrix();
-    glPushMatrix();
 }
 
 /*
