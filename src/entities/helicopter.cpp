@@ -103,7 +103,7 @@ void Helicopter::set_target(Vector target) {
  */
 void Helicopter::set_start_target(Vector target) {
     this->target = target;
-    velocity += Vector(cos(rotation*M_PI/180), sin(rotation*M_PI/180)) * HELICOPTER_MAX_SPEED;
+    velocity += Vector(cos(rotation*PI/180), sin(rotation*PI/180)) * HELICOPTER_MAX_SPEED;
 }
 
 /*

@@ -91,7 +91,7 @@ Vector Vector::normalise() {
  */
 float Vector::angle() {
     if (y == 0 && x == 0) return 0;
-    return atan2(y, x) * 180 / M_PI;
+    return atan2(y, x) * 180 / PI;
 }
 
 /*

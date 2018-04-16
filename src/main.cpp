@@ -9,6 +9,11 @@
 #include "constants.hpp"
 #include "world.hpp"
 
+#if defined(_WIN32) || defined(WIN32) 
+#else
+	#include <unistd.h>
+#endif
+
 int WINDOW_WIDTH = INITIAL_WINDOW_WIDTH;
 int WINDOW_HEIGHT = INITIAL_WINDOW_HEIGHT;
 
@@ -71,7 +76,7 @@ void redraw() {
  */
 void gameloop() {
     double new_time = glutGet(GLUT_ELAPSED_TIME);
-    double frameTime = ((new_time - current_time) * 1000) / CLOCKS_PER_SEC;
+    double frameTime = ((new_time - current_time) * 1000) / CLOCK_PER_SEC;
     current_time = new_time;
 
     accumulator += frameTime;
@@ -82,7 +87,12 @@ void gameloop() {
         glutPostRedisplay();
         accumulator -= FRAME_RATE;
     }
-    Sleep(1);
+
+	#if defined(_WIN32) || defined(WIN32) 
+    	Sleep(1);
+	#else
+		usleep(1);
+	#endif
 }
 
 /*
@@ -98,7 +108,10 @@ void key_up(unsigned char key, int x, int y) {
     if (key == 'q') {
         debug("Exiting");
         running = false;
-    }
+    } else if (key == 'l') {
+		debug("Looping");
+		world.toggle_looping();
+	}
 }
 
 /*
@@ -145,6 +158,8 @@ void reshape(int w, int h) {
     switch (option) {
         case MENU_EXIT:
             exit(0);
+        case MENU_TOGGLE_LOOPING:
+			world.toggle_looping();
         default:
             break;
     }
@@ -157,6 +172,7 @@ void reshape(int w, int h) {
 void createMenu() {
     menu_id = glutCreateMenu(processMenuEvents);
     glutAddMenuEntry("Exit (q)",MENU_EXIT);
+    glutAddMenuEntry("Toggle looping (l)",MENU_TOGGLE_LOOPING);
 
     glutAttachMenu(GLUT_RIGHT_BUTTON);
 }

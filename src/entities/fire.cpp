@@ -45,7 +45,7 @@ void Fire::redraw() {
         glBegin(GL_TRIANGLE_FAN);
             for (int ii = 0; ii < 360; ii++) {
                 float radius = layers[i][ii];
-                float degInRad = ii * M_PI / 180;
+                float degInRad = ii * PI / 180;
                 glVertex2f(cos(degInRad) * radius, sin(degInRad) * radius);
             }
         glEnd();

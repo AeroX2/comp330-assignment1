@@ -55,7 +55,7 @@ void Utils::draw_arc(float radius, int start_degree, int end_degree) {
     glBegin(GL_TRIANGLE_FAN);
         if (!(start_degree == 0 && end_degree == 360)) glVertex2f(0,0);
         for (int i = start_degree; i < end_degree; i++) {
-            float degInRad = i * M_PI / 180;
+            float degInRad = i * PI / 180;
             glVertex2f(cos(degInRad) * radius, sin(degInRad) * radius);
         }
     glEnd();
