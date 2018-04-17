@@ -22,7 +22,7 @@ const long CLOCK_PER_SEC = 1000000;
 const int DOUBLE_CLICK_TIME = 300;
 
 const int MOUSE_POINT_DISTANCE = 20;
-const int HELICOPTER_POINT_DISTANCE = 15;
+const int HELICOPTER_POINT_DISTANCE = 30;
 
 const float SPLASH_WATER_AMOUNT = 10.0f;
 const int SPLASH_SIZE = 80;
