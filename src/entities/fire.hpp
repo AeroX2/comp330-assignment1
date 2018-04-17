@@ -22,7 +22,7 @@ class Fire : public Entity {
         void new_fire();
     private:
         //3 separate layers of "random" circles for the fire
-        vector<int> layers[3];
+        vector<int> layers[1];
 
         int ticks;
 };

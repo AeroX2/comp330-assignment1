@@ -30,7 +30,7 @@ void init() {
     debug("Init");
 
     //Initialize a few OpenGL parameters
-    glClearColor(0.8863, 0.6980, 0.4745, 1);
+    glClearColor(BACKGROUND_COLOR);
     glColor3f(1.0, 1.0, 1.0);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();

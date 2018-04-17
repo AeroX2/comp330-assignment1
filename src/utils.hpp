@@ -8,6 +8,7 @@
 #include <random>
 
 #include "constants.hpp"
+#include "entities/vector.hpp"
 
 using namespace std;
 
@@ -20,8 +21,10 @@ class Utils {
         static float random_clamped();
         static float constrain(float num, float min, float max);
 
-        static void draw_arc(float radius, int start_degree, int end_degree);
+        static void draw_arc(float position, int radius, int start_degree);
         static void draw_circle(float radius);
+
+        static pair<Vector, Vector> circle_intersection(Vector p0, float r0, Vector p1, float r1);
 };
 
 #endif

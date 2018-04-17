@@ -47,11 +47,12 @@ class World {
         Helicopter helicopter;
 		Helicopter fake_helicopter;
 
+		Fire fire;
+		Lake lake;
+
         House house1;
         House house2;
         House house3;
-
-        Lake lake;
 
         vector<Entity *> entities;
         vector<Vector> mouse_points;

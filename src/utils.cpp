@@ -1,4 +1,5 @@
 #include "utils.hpp"
+#include "entities/vector.hpp"
 
 mt19937 &Utils::random_engine() {
     static mt19937 engine{(unsigned int) 347};
@@ -67,4 +68,32 @@ void Utils::draw_arc(float radius, int start_degree, int end_degree) {
  */
 void Utils::draw_circle(float radius) {
     Utils::draw_arc(radius, 0, 360);
+}
+
+/*
+ * Circle intersection code based off
+ * http://paulbourke.net/geometry/circlesphere/tvoght.c
+ */
+pair<Vector,Vector> Utils::circle_intersection(Vector p0, float r0, Vector p1, float r1) {
+    //Check if an intersection exists
+    float d = (p0 - p1).distance();
+    if (d > r0+r1) return {};
+    if (d < fabs(r0-r1)) return {};
+
+    //Determine the distance from point 0 to point 2.
+    float a = ((r0*r0) - (r1*r1) + (d*d)) / (2.0f * d) ;
+
+    //Determine the distance from point 2 to either of the intersection points.
+    float h = sqrt((r0*r0) - (a*a));
+
+    //Now determine the offsets of the intersection points from point 2.
+    Vector p2 = (p1-p0) * (a/d) + p0;
+
+    //Determine the absolute intersection points.
+    float x0 = p2.x + h*(p1.y - p0.y)/d;
+    float y0 = p2.y - h*(p1.x - p0.x)/d;
+    float x1 = p2.x - h*(p1.y - p0.y)/d;
+    float y1 = p2.y + h*(p1.x - p0.x)/d;
+
+    return {Vector(x0,y0), Vector(x1,y1)};
 }

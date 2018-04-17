@@ -9,6 +9,7 @@
 #include "entities/splash.hpp"
 
 World::World() :
+        fire(FIRE_PARAMETERS),
         house1(HOUSE1_PARAMETERS),
         house2(HOUSE2_PARAMETERS),
         house3(HOUSE3_PARAMETERS),
@@ -24,36 +25,33 @@ World::World() :
 }
 
 void World::init() {
+    entities.push_back(&fire);
+    entities.push_back(&lake);
+
     entities.push_back(&house1);
     entities.push_back(&house2);
     entities.push_back(&house3);
-
-    //entities.push_back(&fire1);
-    //entities.push_back(&fire2);
-    //entities.push_back(&fire3);
-
-    for (int i = 0; i <= 360; i += 20) {
-        float deg = i * PI / 180;
-        float x = INITIAL_WINDOW_WIDTH/2 + cos(deg)*FIRE_DISTANCE_FROM_ORIGIN;
-        float y = INITIAL_WINDOW_HEIGHT/2 + sin(deg)*FIRE_DISTANCE_FROM_ORIGIN;
-        Fire* fire = new Fire(Vector(x,y),Vector(0,0)); 
-        entities.push_back(fire);
-    }
-
-    entities.push_back(&lake);
 
     entities.push_back(&helicopter);
 }
 
 void World::reset() {
     helicopter = Helicopter();
+    entities.clear();
     clear_mouse_points();
+    init();
 }
 
 void World::update() {
     //Update every entity
-    for (Entity *entity : entities) {
+    for (Entity* entity : entities) {
         entity->update();
+
+        //Check if there is a splash and check if there is a
+        //collision with the fire ring
+        auto splash = dynamic_cast<Splash*>(entity);
+        if (splash == nullptr) continue;
+        splash->check_collision(&fire);
     }
 
     //If there is a collision with the lake
@@ -109,6 +107,8 @@ void World::redraw() {
 
     //Draw the water meter
     glPushMatrix();
+        glLoadIdentity();
+
         glColor3ub(0, 0, 0);
         glRasterPos2i(65, 10);
         glutBitmapString(GLUT_BITMAP_HELVETICA_12, reinterpret_cast<const unsigned char *>("Water meter"));
@@ -183,8 +183,10 @@ void World::mouse_click(int x, int y) {
             float &water = helicopter.get_water();
             if (water >= SPLASH_WATER_AMOUNT) {
                 water -= SPLASH_WATER_AMOUNT;
-                Entity *entity = new Splash(helicopter.position, Vector(50, 0));
-                entities.push_back(entity);
+                Entity* splash = new Splash(helicopter.position, Vector(SPLASH_SIZE, SPLASH_SIZE));
+
+                //Draw splash above fire
+                entities.insert(entities.begin()+1, splash);
             }
         }
         previousClickTime = 0;

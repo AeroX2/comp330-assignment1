@@ -28,11 +28,11 @@ void Fire::update() {
 }
 
 void Fire::new_fire() {
-    for (int i = 0; i < sizeof(layers) / sizeof(layers[0]); i++) {
-        layers[i].clear();
+    for (auto &layer : layers) {
+        layer.clear();
         for (int ii = 0; ii < 360; ii++) {
-            int radius = Utils::random_range_int(layer_sizes[i][0], layer_sizes[i][1]);
-            layers[i].push_back(radius);
+            int radius = size.y; //Utils::random_range_int(layer_sizes[i][0], layer_sizes[i][1]);
+            layer.push_back(radius);
         }
     }
 }
@@ -40,14 +40,23 @@ void Fire::new_fire() {
 void Fire::redraw() {
     Entity::redraw();
 
-    for (int i = 0; i < sizeof(layers) / sizeof(layers[0]); i++) {
-        glColor3ub(layer_colors[i][0], layer_colors[i][1], layer_colors[i][2]);
+    //Can't use Utils::draw_circle for this because radius keeps changing
+    for (auto &layer : layers) {
+        //glColor3ub(layer_colors[i][0], layer_colors[i][1], layer_colors[i][2]);
+        glColor3ub(255,0,0);
         glBegin(GL_TRIANGLE_FAN);
             for (int ii = 0; ii < 360; ii++) {
-                float radius = layers[i][ii];
+                float radius = layer[ii];
                 float degInRad = ii * PI / 180;
                 glVertex2f(cos(degInRad) * radius, sin(degInRad) * radius);
             }
+        glEnd();
+        glColor4f(BACKGROUND_COLOR);
+        glBegin(GL_TRIANGLE_FAN);
+        for (int ii = 0; ii < 360; ii++) {
+            float degInRad = ii * PI / 180;
+            glVertex2f(cos(degInRad) * size.x, sin(degInRad) * size.x);
+        }
         glEnd();
     }
 
