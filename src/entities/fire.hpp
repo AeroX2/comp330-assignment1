@@ -20,11 +20,15 @@ class Fire : public Entity {
         void update();
         void redraw();
         void new_fire();
-    private:
-        //3 separate layers of "random" circles for the fire
-        vector<int> layers[1];
 
+        int layer_size;
+        static int layer_sizes[][2];
+        static unsigned char layer_colors[][3];
+    private:
         int ticks;
+
+        //3 separate layers of "random" circles for the fire
+        vector<int> layers[4];
 };
 
 #endif /* ENTITIES_FIRE_HPP_ */

@@ -33,9 +33,6 @@ void Splash::redraw() {
 
     if (fire == nullptr) return;
     glPushMatrix();
-        float distance = (position - fire->position).distance();
-        bool inside = distance < fire->size.y;
-
         //Draw the blackened earth part of the splash
         glColor3b(0,0,0);
         glBegin(GL_POLYGON);
@@ -43,19 +40,19 @@ void Splash::redraw() {
                 float x = cos(i*PI/180) * size.y;
                 float y = sin(i*PI/180) * size.y;
 
-                //If the point is inside the inner fire ring, recalculate the point from the fire ring
-                //"point of view"
+                //If the point is inside the inner fire ring, recalculate the point
+                //from the fire ring "point of view"
                 Vector v = (position + Vector(x,y)) - fire->position;
                 float a = v.angle() * PI / 180;
                 bool inside_inner_ring = v.fake_distance() < fire->size.x*fire->size.x;
                 bool inside_outer_ring = v.fake_distance() < fire->size.y*fire->size.y;
 
                 if (inside_inner_ring) {
-                    x = -position.x + fire->position.x + cos(a) * fire->size.x;
-                    y = -position.y + fire->position.y + sin(a) * fire->size.x;
+                    x = -position.x + fire->position.x + cos(a) * Fire::layer_sizes[fire->layer_size-1][0];
+                    y = -position.y + fire->position.y + sin(a) * Fire::layer_sizes[fire->layer_size-1][0];
                 } else if (!inside_outer_ring) {
-                    x = -position.x + fire->position.x + cos(a) * fire->size.y;
-                    y = -position.y + fire->position.y + sin(a) * fire->size.y;
+                    x = -position.x + fire->position.x + cos(a) * Fire::layer_sizes[0][1];
+                    y = -position.y + fire->position.y + sin(a) * Fire::layer_sizes[0][1];
                 }
 
                 glVertex2d(x, y);
