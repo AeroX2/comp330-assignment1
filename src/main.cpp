@@ -59,13 +59,16 @@ void redraw() {
     glClear(GL_COLOR_BUFFER_BIT);
     world.redraw();
 
-    glColor3b(0, 0, 0);
-    glRasterPos2i(10, WINDOW_HEIGHT - 50);
-    glutBitmapString(GLUT_BITMAP_HELVETICA_12,
-                     reinterpret_cast<const unsigned char *>("Double click over the lake\nto fill up on water"));
-    glRasterPos2i(10, WINDOW_HEIGHT - 85);
-    glutBitmapString(GLUT_BITMAP_HELVETICA_12,
-                     reinterpret_cast<const unsigned char *>("Double click anywhere else\nto dump the water collected"));
+    glPushMatrix();
+        glLoadIdentity();
+        glColor3b(0, 0, 0);
+        glRasterPos2i(10, WINDOW_HEIGHT - 50);
+        glutBitmapString(GLUT_BITMAP_HELVETICA_12,
+                         reinterpret_cast<const unsigned char *>("When the helicopter is over the lake, double click to fill up on water"));
+        glRasterPos2i(10, WINDOW_HEIGHT - 75);
+        glutBitmapString(GLUT_BITMAP_HELVETICA_12,
+                         reinterpret_cast<const unsigned char *>("Double click when the helicopter is not over the lake to dump water"));
+    glPopMatrix();
 
     glutSwapBuffers();
 }

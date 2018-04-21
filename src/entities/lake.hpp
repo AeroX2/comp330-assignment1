@@ -19,6 +19,8 @@ class Lake : public Entity {
         Lake(Vector position, Vector size);
         void redraw();
         bool check_collision(Entity entity);
+    private:
+        static int coords[][2];
 };
 
 #endif /* ENTITIES_FIRE_HPP_ */

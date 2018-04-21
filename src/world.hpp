@@ -32,10 +32,10 @@ class World {
         void mouse_point(int x, int y);
         void mouse_click(int x, int y);
 
-		void toggle_looping();
+        void toggle_looping();
         void reset();
-		void clear_mouse_points();
-	private:
+        void clear_mouse_points();
+    private:
         int fps;
         int frameCounter;
         int previousFPSTime;
@@ -45,10 +45,10 @@ class World {
         bool looping;
 
         Helicopter helicopter;
-		Helicopter fake_helicopter;
+        Helicopter fake_helicopter;
 
-		Fire fire;
-		Lake lake;
+        Fire fire;
+        Lake lake;
 
         House house1;
         House house2;

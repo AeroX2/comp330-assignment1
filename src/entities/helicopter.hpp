@@ -27,6 +27,8 @@ class Helicopter : public Entity {
         float &get_water();
 
 private:
+        static int coords[][2];
+
         bool stop;
         bool filling;
 

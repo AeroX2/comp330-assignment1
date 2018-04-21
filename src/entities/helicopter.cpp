@@ -8,6 +8,11 @@
 #include "helicopter.hpp"
 #include "../utils.hpp"
 
+int Helicopter::coords[][2] = {
+      {23,0}, {23,1}, {21,2}, {19,4}, {16,5}, {9,7}, {-13,7}, {-14,5}, {-44,1}, {-56,1}, {-60,0},
+      {-60,0}, {-56,-1}, {-44,-1}, {-14,-5}, {-13,-7}, {9,-7}, {16,-5}, {19,-4}, {21,-2}, {23,-1}, {23,0}
+};
+
 Helicopter::Helicopter() : Entity(Vector(INITIAL_WINDOW_WIDTH / 2, INITIAL_WINDOW_HEIGHT / 2), Vector(25, 25)) {
     debug("Creating helicopter object");
 
@@ -53,13 +58,21 @@ void Helicopter::draw_helicopter(bool fake) {
     glColor4ub(255, 255, 255, 250);
 
     //If this is a fake helicopter only draw the outline
-    if (fake) glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    if (fake) {
+        glLineWidth(2);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    }
 
-    glRotatef(-90,0,0,1);
-    //Draw the helicopter body
-    glRectf(-size.x / 2, -size.y / 2, size.x / 2, size.y / 2);
-    //And tail
-    glRecti(-3, -50, 3, 0);
+    glRecti(-8,-15,-10,15);
+    glRecti(6,-15,8,15);
+    glRecti(-15,-15,12,-13);
+    glRecti(-15,15,12,13);
+
+    glBegin(GL_TRIANGLE_FAN);
+        for (auto coord : Helicopter::coords) {
+            glVertex2f(coord[0], coord[1]);
+        }
+    glEnd();
 
     //Draw the helicopter blade
     glPushMatrix();

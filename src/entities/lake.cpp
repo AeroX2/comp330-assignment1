@@ -8,7 +8,7 @@
 #include "lake.hpp"
 
 //Crudely drawn lake coordinates
-int coords[][2] = {
+int Lake::coords[][2] = {
         {-103, 11}, {-53,  4}, {-19,  2}, {50,   0}, {74,   17}, {91,   34}, {106,  54}, {119,  73}, {143,  102},
         {163,  113}, {191,  131}, {222,  141}, {245,  150}, {250,  160}, {235,  168}, {242,  182}, {262,  188},
         {285,  192}, {314,  193}, {347,  188}, {388,  189}, {412,  192}, {420,  204}, {424,  221}, {413,  234},
@@ -29,7 +29,7 @@ void Lake::redraw() {
 
     glColor3ub(0, 0, 255);
     glBegin(GL_TRIANGLE_FAN);
-        for (auto coord : coords) {
+        for (auto coord : Lake::coords) {
             glVertex2f(coord[0], coord[1]);
         }
     glEnd();
